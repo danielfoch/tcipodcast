@@ -16,6 +16,7 @@ const siteEntries = [
   'blog',
   'episodes',
   'shows',
+  'research',
 ];
 
 const failures = [];

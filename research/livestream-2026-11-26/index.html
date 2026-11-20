@@ -292,6 +292,75 @@
     </section>
 
 
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Dan on X · Nov 20, 3:40 PM ET</span>
+      <h2 style="margin-bottom:16px">Cook wants another hike. Mortgage rates are already at 7.28%.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="mortgage-fed" aria-label="Freddie Mac 30-year fixed mortgage rate and the Fed funds target upper bound, 2022 to Nov 2026. Mortgage rate 7.28% on Nov 19, Fed funds upper bound 4.00%."></canvas></div></div>
+        <div class="aside">
+          <p>“A Fed governor dissented this fall because she wanted to hike MORE. US inflation 3.8%, mortgage rates already 7.28%. Everyone waiting for the rate cuts that fix housing should read this speech. Canada gets the bill for this too, through the bond market.”</p>
+          <p class="muted">— @danielfoch</p>
+        </div>
+      </div>
+      <p class="credit">Source: @danielfoch, Nov 20, 2026, 3:40 PM ET, x.com/danielfoch/status/2123879247617863959, with the linked speech. The dissent and the 3.8% inflation figure are from the post and were not re-verified here. BLS CPI-U all items (not seasonally adjusted) was up 3.7% year over year in September 2026; October’s 12-month change can’t be recomputed from the index because BLS published no October 2025 CPI.</p>
+      <p class="credit data-credit">Rebuilt from FRED MORTGAGE30US (Freddie Mac PMMS, weekly, Jan 6, 2022 to Nov 19, 2026) and DFEDTARU (Fed funds target range, upper bound; 3.75% to 4.00% on Sep 17, 2026). Same series as the chart on Dan’s post.</p>
+    </section>
+
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">@PHfloor reply to Dan · Nov 20, 4:44 PM ET</span>
+      <h2 style="margin-bottom:16px">US 5-year minus Canada 5-year. When does Canada start getting the bill?</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-slot" data-chart-slot="us-ca-5y" data-state="spread">
+          <div class="chart-frame" data-shared="us-ca-5y"><div class="chart-wrap"><canvas id="us-ca-5y" aria-label="US 5-year Treasury yield minus Government of Canada 5-year benchmark yield, weekly, 2001 to Nov 2026, at 1.33 percentage points on Nov 19."></canvas></div></div>
+        </div>
+        <div class="aside">
+          <span class="kicker">Nov 19 close</span>
+          <div class="bignum" data-count="1.33" data-decimals="2" data-suffix=" pts">1.33 pts</div>
+          <p>US 5-year 4.86% less Canada 5-year 3.53%. Canada is borrowing well below the US at the 5-year point.</p>
+          <p class="muted">Widest weekly gap in this data since 2001: 1.62 pts, Jan 31, 2025.</p>
+        </div>
+      </div>
+      <p class="credit">Source: @PHfloor, Nov 20, 2026, 4:44 PM ET, replying to Dan: “History of difference between US 5YR yield less Canada’s. When does Canada start getting the bill?” The attached TradingView chart (US05Y-CA05Y, weekly) read 1.320% intraday Nov 20.</p>
+      <p class="credit data-credit">Rebuilt from FRED DGS5 (US Treasury 5-year constant maturity) minus Bank of Canada Valet BD.CDN.5YR.DQ.YLD (GoC benchmark 5-year), last common daily close each week, Jan 5, 2001 to Nov 19, 2026. The Bank of Canada series starts in 2001, so the 1997–2000 stretch on the TradingView chart is not shown.</p>
+    </section>
+
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Dan’s answer · Nov 20, 6:12 PM ET</span>
+      <h2 style="margin-bottom:16px">“If we don’t get it through yields we get it through CADUSD and imported inflation.”</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-slot" data-chart-slot="us-ca-5y" data-state="cad"></div>
+        <div class="aside">
+          <span class="kicker">The loonie</span>
+          <div class="bignum" data-count="69.8" data-decimals="1" data-suffix="¢">69.8¢</div>
+          <p>Bank of Canada, Nov 20: USD/CAD 1.4325, about 69.8 US cents per Canadian dollar.</p>
+          <p class="muted">A weaker loonie makes imports cost more in Canadian dollars. Opinion, not a forecast.</p>
+        </div>
+      </div>
+      <p class="credit">Source: @danielfoch, Nov 20, 2026, 6:12 PM ET, x.com/danielfoch/status/2123917517156749697, replying to @PHfloor. Bank of Canada FXUSDCAD daily rate for Nov 20, 2026: 1.4325.</p>
+      <p class="credit data-credit">Same spread as the last slide, plus CAD/USD (US$ per C$) calculated as 1 / FRED DEXCAUS (Fed H.10, noon New York), weekly to Nov 13, 2026, the latest H.10 print.</p>
+    </section>
+
     <section class="slide theme-ink" data-slide>
       
       <div class="topbar">
@@ -571,6 +640,77 @@
       ctx.restore();
     } }]
   }));
+
+  /* Dan's X thread, Nov 20 · mortgage rate vs Fed funds, FRED */
+  Deck.chart("mortgage-fed", () => {
+    const W = D.mortgageFed.weeks, labels = W.map(w => w[0]), n = W.length;
+    return {
+      type: "line",
+      data: { labels, datasets: [
+        { label: "30-yr fixed mortgage rate (Freddie Mac PMMS)", data: W.map(w => w[1]), borderColor: T.red, borderWidth: 3, pointRadius: 0, tension: .15 },
+        { label: "Fed funds target, upper bound", data: W.map(w => w[2]), borderColor: T.teal, borderWidth: 3, pointRadius: 0, stepped: true }
+      ] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(n, 1800),
+        interaction: { mode: "index", intersect: false }, layout: { padding: { right: 70, top: 6 } },
+        plugins: { legend: { position: "top", align: "start", labels: { color: T.text, usePointStyle: true, pointStyle: "line", font: { size: 14 } } },
+          tooltip: { callbacks: { title: (it) => new Date(it[0].label + "T12:00:00").toLocaleDateString("en-CA", { month: "short", day: "numeric", year: "numeric" }), label: (c) => c.dataset.label + ": " + c.raw.toFixed(2) + "%" } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { autoSkip: false, maxRotation: 0, font: { size: 15 },
+            callback(v, i){ const l = labels[i], p = labels[i - 1]; return !p || p.slice(0, 4) !== l.slice(0, 4) ? l.slice(0, 4) : ""; } } },
+          y: { min: 0, max: 8, ticks: { font: { size: 15 }, callback: (v) => v + "%" }, grid: { color: T.grid } }
+        }
+      },
+      plugins: [{ id: "mfNotes", afterDatasetsDraw(chart){
+        const m = pt(chart, 0, n - 1), f = pt(chart, 1, n - 1);
+        if (ok(m)) tag(chart.ctx, "7.28%", m.x + 8, m.y, { base: "middle", color: T.red, size: 17 });
+        if (ok(f)) tag(chart.ctx, "4.00%", f.x + 8, f.y, { base: "middle", color: T.teal, size: 17 });
+      } }]
+    };
+  });
+
+  /* @PHfloor's spread, then Dan's CAD/USD answer · one chart across two slides */
+  Deck.chart("us-ca-5y", (state) => {
+    const W = D.usCa5y.weeks, labels = W.map(w => w[0]), n = W.length;
+    const cad = (st) => st === "cad" ? W.map(w => w[2]) : W.map(() => null);
+    return {
+      type: "line",
+      data: { labels, datasets: [
+        { label: "US 5Y minus Canada 5Y (pts)", data: W.map(w => w[1]), borderColor: T.teal, borderWidth: 2, pointRadius: 0, tension: .1, yAxisID: "y",
+          fill: { target: { value: 0 }, above: alpha(T.teal, .16), below: alpha(T.red, .14) } },
+        { label: "CAD/USD (US$ per C$)", data: cad(state), borderColor: T.red, borderWidth: 2.5, pointRadius: 0, tension: .1, yAxisID: "y2" }
+      ] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(n, 2000),
+        interaction: { mode: "index", intersect: false }, layout: { padding: { right: 8, top: 6 } },
+        plugins: { legend: { position: "top", align: "start", labels: { color: T.text, usePointStyle: true, pointStyle: "line", font: { size: 14 },
+            filter: (it, data) => data.datasets[it.datasetIndex].data.some(v => v != null) } },
+          tooltip: { callbacks: { title: (it) => "Week of " + new Date(it[0].label + "T12:00:00").toLocaleDateString("en-CA", { month: "short", day: "numeric", year: "numeric" }),
+            label: (c) => c.raw == null ? null : c.datasetIndex === 0 ? "US 5Y − Canada 5Y: " + c.raw.toFixed(2) + " pts" : "CAD/USD: " + c.raw.toFixed(4) } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { autoSkip: false, maxRotation: 0, font: { size: 15 },
+            callback(v, i){ const l = labels[i], p = labels[i - 1]; return p && p.slice(0, 4) !== l.slice(0, 4) && (+l.slice(0, 4)) % 3 === 2 ? l.slice(0, 4) : ""; } } },
+          y: { min: -2, max: 2, ticks: { font: { size: 15 }, callback: (v) => (v > 0 ? "+" : "") + v + " pts" }, grid: { color: T.grid } },
+          y2: { display: state === "cad", position: "right", min: 0.6, max: 1.1, grid: { display: false },
+            ticks: { color: T.red, font: { size: 15 }, callback: (v) => "$" + v.toFixed(2) } }
+        }
+      },
+      plugins: [{ id: "spreadNotes", afterDatasetsDraw(chart){
+        hline(chart, 0, alpha("#9fb6c6", .6), "US = Canada", { dash: [4, 4] });
+        const z = pt(chart, 0, n - 1);
+        if (ok(z)) tag(chart.ctx, "1.33", z.x - 8, z.y - 12, { align: "right", color: T.teal, size: 16 });
+        const c = chart.getDatasetMeta(1).data[n - 1];
+        if (chart.data.datasets[1].data[n - 1] != null && ok(c)) tag(chart.ctx, "$0.70", c.x - 8, c.y - 12, { align: "right", color: T.red, size: 16 });
+      } }]
+    };
+  }, {
+    update(chart, state){
+      chart.options.animation = Deck.reduce ? false : { duration: 1100, easing: "easeOutCubic" };
+      const W = D.usCa5y.weeks;
+      chart.data.datasets[1].data = state === "cad" ? W.map(w => w[2]) : W.map(() => null);
+      chart.options.scales.y2.display = state === "cad";
+    }
+  });
 
   Deck.start();
 })();

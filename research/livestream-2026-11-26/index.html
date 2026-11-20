@@ -10,105 +10,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-:root{
-  --paper:#fdf7ee;--ink:#183d47;--red:#ed3c4d;--teal:#227e90;
-  --line:#d5d6cc;--muted:#5c6e70;--panel:#fff;--accent:#ed3c4d;
-  --shadow:0 18px 50px rgba(24,61,71,.12);
-}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);
-  font:18px/1.5 "DM Sans",sans-serif;overflow:hidden}
-button{font:inherit;color:inherit;cursor:pointer}
-a{color:inherit}
-.deck{height:100%;width:100%;position:relative}
-.slide{
-  position:absolute;inset:0;display:flex;flex-direction:column;
-  padding:clamp(28px,4.5vh,56px) clamp(28px,6vw,88px) 72px;
-  opacity:0;visibility:hidden;pointer-events:none;
-  transform:translateY(18px);transition:opacity .35s ease,transform .35s ease,visibility 0s linear .35s;
-}
-.slide.active{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:none}
-.slide.theme-ink{background:#183d47;color:#fdf7ee}
-.slide.theme-ink .muted,.slide.theme-ink .credit,.slide.theme-ink .kicker{color:#bcd0d4}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:clamp(18px,4vh,40px)}
-.brand-mark{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand-mark img{height:56px;width:auto;display:block;background:transparent}
-.brand-mark span{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.03em;font-size:14px;line-height:1.15}
-.brand-mark small{display:block;font-size:9px;letter-spacing:.28em;font-weight:600;margin-top:3px}
-.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700}
-h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:1.05;margin:0}
-.one-liner h1{font-size:clamp(2.6rem,6.6vw,5.6rem);max-width:18ch}
-.one-liner{justify-content:center}
-.title-slide{justify-content:center}
-.title-slide h1{font-size:clamp(3rem,7vw,6.2rem);max-width:14ch}
-.title-slide .lede{margin-top:28px;font-size:clamp(1.05rem,2vw,1.35rem);max-width:34rem;color:var(--muted)}
-.theme-ink .title-slide .lede,.slide.theme-ink .lede{color:#d3e2e4}
-.chart-stage{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:22px}
-.chart-stage.has-aside{grid-template-columns:minmax(0,1.4fr) minmax(220px,.7fr)}
-.chart-frame{background:var(--panel);border:1px solid var(--line);padding:18px;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden}
-.slide.theme-ink .chart-frame{background:#102830;border-color:#2a4a52}
-.chart-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.chart-wrap{position:relative;width:min(100%,520px);height:min(100%,520px);max-height:100%;margin:auto;min-height:240px}
-.chart-wrap canvas{width:100%!important;height:100%!important}
-.aside{display:flex;flex-direction:column;justify-content:center;gap:16px}
-.aside p{margin:0;font-size:1.05rem}
-.credit{margin-top:auto;padding-top:18px;font-size:13px;color:var(--muted);max-width:70rem}
-.credit a{text-underline-offset:3px}
-.footerbar{
-  position:fixed;left:0;right:0;bottom:0;z-index:5;
-  display:flex;align-items:center;gap:16px;
-  padding:10px clamp(20px,5vw,72px) 14px;
-  background:linear-gradient(180deg,transparent,rgba(253,247,238,.92) 36%);
-}
-.slide.theme-ink ~ .footerbar,.deck.is-ink .footerbar{background:linear-gradient(180deg,transparent,rgba(24,61,71,.92) 36%);color:#fdf7ee}
-.progress{flex:1;height:3px;background:var(--line);position:relative}
-.progress > span{position:absolute;inset:0 auto 0 0;background:var(--accent);width:0}
-.counter{font-size:12px;font-weight:700;letter-spacing:.08em;min-width:4.5em}
-.navbtns{display:flex;gap:8px}
-.navbtns button{
-  width:42px;height:42px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
-  font-size:20px;line-height:1;
-}
-.deck.is-ink .navbtns button,.slide.theme-ink ~ .footerbar .navbtns button{border-color:#fdf7ee;background:#fdf7ee;color:#183d47}
-.navbtns button:disabled{opacity:.4}
-.navbtns button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
-.navbtns button:disabled{opacity:.35;cursor:default}
-.hint{margin-top:36px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-@media(max-width:800px){
-  .chart-stage.has-aside{grid-template-columns:1fr}
-  .brand-mark img{height:42px}
-  .slide{padding:22px 20px 78px}
-}
-@media(prefers-reduced-motion:reduce){
-  .slide{transition:none}
-}
-
-.frame-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;min-height:0;align-content:center}
-.frame-card{background:var(--panel);border:1px solid var(--line);padding:22px 24px;display:flex;flex-direction:column;gap:8px}
-.slide.theme-ink .frame-card{background:#102830;border-color:#2a4a52}
-.frame-card .num{font-family:Manrope,sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.08em;color:var(--accent)}
-.slide.theme-ink .frame-card .num{color:#f34a58}
-.frame-card h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.35rem;letter-spacing:-.03em;margin:0}
-.frame-card p{margin:0;font-size:1rem;line-height:1.45;color:var(--muted)}
-.slide.theme-ink .frame-card p{color:#d3e2e4}
-.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1;align-content:center;min-height:0}
-.stat{background:var(--panel);border:1px solid var(--line);padding:36px 32px}
-.stat .figure{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:-.04em;line-height:1;margin:12px 0 16px}
-.stat .label{font-size:1.05rem;color:var(--muted);margin:0;max-width:28rem}
-@media(max-width:800px){
-  .frame-grid,.stat-row{grid-template-columns:1fr}
-}
-</style>
+  <link rel="stylesheet" href="./deck.css">
 </head>
 <body>
   <div class="deck">
+    <div class="cam-zone" aria-hidden="true"></div>
     
     <section class="slide title-slide theme-ink active" data-slide>
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -124,7 +36,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -132,11 +44,10 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">The tape · mid-session</span>
       <h2 style="margin-bottom:16px">The Nasdaq slipped negative for 2026.</h2>
       <div class="chart-stage">
-        <div class="chart-frame" style="background:#111;">
-          <img src="./nasdaq-composite-ytd-2026-kobeissi.png" alt="TradingView YTD chart of the Nasdaq Composite on Nov 20, 2026 at 11:04 AM ET, showing 23,215.22, just below the 2025 close.">
-        </div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="nasdaq-ytd" aria-label="Nasdaq Composite daily closes in 2026 against the 2025 close of 23,241.99, peaking Oct 6 and ending with the Nov 20 11:04 AM ET snapshot of 23,215.22, just below the 2025 close."></canvas></div></div>
       </div>
       <p class="credit">Source: TradingView snapshot of Nasdaq Composite (INDEXNASDAQ: IXIC), Nov 20, 2026, 11:04 AM EST, circulated with The Kobeissi Letter. The snapshot is mid-session, not the official Friday close. At that timestamp the index was 23,215.22, just through the implied 2025 close. Dow Jones / FactSet: Oct 6 close 27,599.79 was +18.75% YTD (Kobeissi’s “+19%” is a rounding of that peak); Nov 19 close 23,879.20 was still +2.74% YTD. Confirm the official Nov 20 close before going on air.</p>
+      <p class="credit data-credit">Rebuilt from FRED series NASDAQCOM (NASDAQ OMX Group), daily closes Jan 2 to Nov 19, 2026; 2025 close 23,241.99 (Dec 31, 2025). The red point is the 11:04 AM ET TradingView snapshot above, not a close.</p>
     </section>
 
 
@@ -145,7 +56,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -153,7 +64,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Poster’s claim · label it as such</span>
       <h2 style="margin-bottom:16px">BullTheory: top AI stocks are down 53% from the peak.</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
+        <div class="chart-frame image-card"><span class="orig-tag">Original chart · @BullTheoryio · basket data not public</span>
           <img src="./ai-stocks-drawdown-bulltheory-chart.png" alt="BullTheory chart titled The AI bubble is already halfway to a dot-com crash, showing a claimed 53% average drawdown for a 39-name AI basket versus dot-com and 2008.">
         </div>
       </div>
@@ -165,7 +76,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -187,7 +98,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -195,7 +106,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Poster’s claim · do not treat as official</span>
       <h2 style="margin-bottom:16px">“$1 trillion wiped from US stocks in 60 minutes.”</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
+        <div class="chart-frame image-card"><span class="orig-tag">Original image · @cryptorover · no underlying dataset</span>
           <img src="./us-stocks-1t-crypto-80b-cryptorover.jpg" alt="Crypto Rover collage of a red crypto mosaic and a US stock treemap, used to accompany a claim that $1 trillion was wiped from US stocks in 60 minutes and $80 billion from crypto.">
         </div>
       </div>
@@ -208,19 +119,23 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
 
       <span class="kicker">The tape</span>
       <h2 style="margin-bottom:16px">CNN Fear &amp; Greed at 14, Extreme Fear.</h2>
-      <div class="chart-stage">
-        <div class="chart-frame">
-          <img src="./cnn-fear-greed-14-kobeissi.png" alt="CNN Fear and Greed Index screenshot last updated Nov 20, 2026 at 11:05:07 AM ET, reading 14, Extreme Fear. Previous close 18, one week ago 37.">
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="fear-greed" aria-label="CNN Fear and Greed Index daily readings over the past year, ending with the Nov 20, 2026 11:05 AM ET reading of 14, Extreme Fear."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">Nov 20 · 11:05 AM ET</span>
+          <div class="bignum" data-count="14">14</div>
+          <p>Extreme Fear. Previous close 18, one week ago 37, one month ago 28, one year ago 5.</p>
         </div>
       </div>
       <p class="credit">Source: CNN Fear &amp; Greed Index screenshot circulated by The Kobeissi Letter, last updated Nov 20, 2026 at 11:05:07 AM ET, reading 14. Previous close 18; 1 week ago 37; 1 month ago 28; 1 year ago 5. Kobeissi’s “down 26 points in 8 days” and “lowest since the March 30 bottom” are the poster’s claims — the same snapshot’s one-week comparison is 37, not 40, and it does not show the March 30 reading. This is an 11:05 AM ET print, not a close.</p>
+      <p class="credit data-credit">Rebuilt from CNN Business Fear &amp; Greed graph data, daily readings Nov 20, 2025 to Nov 19, 2026 as published by CNN; bands are CNN’s (0–25 Extreme Fear, 25–45 Fear, 45–55 Neutral, 55–75 Greed, 75–100 Extreme Greed). The final red point is the 11:05 AM ET snapshot reading of 14.</p>
     </section>
 
 
@@ -228,7 +143,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -236,14 +151,14 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Official Walmart Q3 FY27</span>
       <h2 style="margin-bottom:16px">$188.8 billion in revenue. Over $2 billion in diesel and freight.</h2>
       <div class="stat-row">
-        <div class="stat">
+        <div class="stat reveal">
           <span class="kicker">Total revenues</span>
-          <div class="figure">$188.8B</div>
+          <div class="figure" data-count="188.8" data-decimals="1" data-prefix="$" data-suffix="B">$188.8B</div>
           <p class="label">Official total revenues $188.835 billion, up 5.2%, quarter ended Oct 31, 2026.</p>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <span class="kicker">Diesel and transportation</span>
-          <div class="figure">Over $2B</div>
+          <div class="figure" data-count="2" data-prefix="Over $" data-suffix="B" data-duration="900">Over $2B</div>
           <p class="label">CFO John David Rainey, Nov 19 call: “between diesel and transportation, it will be over $2 billion of incremental costs that we’ve had to navigate this year.”</p>
         </div>
       </div>
@@ -255,7 +170,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -263,11 +178,10 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Front-end stress</span>
       <h2 style="margin-bottom:16px">Treasury sold a 9-day bill, the first since July 2008.</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
-          <img src="./treasury-9-day-bill-barchart.jpg" alt="Bar chart titled The Return Of The 9-Day Bill, showing every 9-day US Treasury cash management bill auction by offering size, with the Nov 19, 2026 $15 billion auction in red.">
-        </div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="nine-day-bills" aria-label="Every 9-day US Treasury cash management bill auction by offering size, 1981 to 2026, with the Nov 19, 2026 $15 billion auction in red."></canvas></div></div>
       </div>
       <p class="credit">Source: chart via Barchart / ZeroHedge, sourced to TreasuryDirect auction data. Official TreasuryDirect results (R_20261119_4.pdf): 9-Day Cash Management Bill auctioned Nov 19, 2026, $15 billion offering, CUSIP 912797VA2, issue Nov 24, mature Dec 3, high discount rate 3.910%, investment rate 3.968%, bid-to-cover 3.97. Fiscal Data records a prior 9-day auction on July 21, 2008 ($9 billion, high discount 1.565%).</p>
+      <p class="credit data-credit">Rebuilt from U.S. Treasury Fiscal Data, Treasury Securities Auctions Data (all 10 auctions with security term 9-Day, 1981–2008), plus the TreasuryDirect securities record for CUSIP 912797VA2 (Nov 19, 2026). Offering amounts; hover for the high discount rate.</p>
     </section>
 
 
@@ -277,7 +191,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -285,20 +199,21 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Verified mid-session · 3:06 PM ET Nov 20</span>
       <h2 style="margin-bottom:16px">Five of the six named banks are in a bear market. Wells Fargo is not, yet.</h2>
       <div class="chart-stage has-aside">
-        <div class="chart-frame"><div class="chart-wrap" style="width:min(100%,640px);height:min(100%,520px)"><canvas id="bank-drawdowns" aria-label="Bar chart of mid-session drawdowns from 52-week highs for BAC, WFC, GS, MS, COF, C and the KBW Nasdaq Bank Index."></canvas></div></div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="bank-drawdowns" aria-label="Bar chart of mid-session drawdowns from 52-week highs for BAC, WFC, GS, MS, COF, C and the KBW Nasdaq Bank Index."></canvas></div></div>
         <div class="aside">
           <p>@macropaperr said 6 of the 10 largest US banks were in bear territory, and had Wells Fargo at −20.1%. That −20.1% is not current — it matches an earlier Oct 14 post.</p>
           <p>Mid-session, WFC is 18.8% below its Jan 5 high. Bank stress still matters for housing: tighter credit pushes against the rates tailwind.</p>
         </div>
       </div>
       <p class="credit">Sources: @macropaperr, Nov 20, 2026, 1:09 PM ET; Yahoo Finance last prices around 3:06 PM ET Nov 20 vs each name’s 52-week high (BAC $65.23 Aug 17, WFC $97.76 Jan 5, GS $1,153.99 Jul 15, MS $232.25 Jul 15, COF $259.64 Jan 6, C $147.96 Jun 18, ^BKX 195.55 Aug 17). Mid-session, not the official Friday close. The 20% line is the usual bear-market threshold. KBW is 18.2% below that high, or 17.5% below the Aug 14 record close of 193.91; Friday’s 159.62 session low is the lowest since April 7, which supports the poster’s “7-month low,” as a low, not a close.</p>
+      <p class="credit data-credit">Bars use the verified mid-session figures above, unchanged.</p>
     </section>
 
     <section class="slide" data-slide>
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -306,7 +221,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">The long view</span>
       <h2 style="margin-bottom:16px">Young-to-old transfers got a lot larger.</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
+        <div class="chart-frame image-card"><span class="orig-tag">Original chart · Financial Times · underlying data not published</span>
           <img src="./pensions-ate-the-state-chart.jpg" alt="FT chart: Economic transfers from young to old have become far larger. Taxes paid versus benefits and services received per person, by age, inflation-adjusted, for the US and UK in 1979 and 2024.">
         </div>
       </div>
@@ -318,7 +233,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -340,7 +255,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -348,7 +263,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">RBC Q2 2026 · Canada</span>
       <h2 style="margin-bottom:16px">Condo affordability has eased back toward 2017.</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
+        <div class="chart-frame image-card"><span class="orig-tag">Original chart · RBC Economics · series not published</span>
           <img src="./rbc-condo-affordability-2017.jpg" alt="RBC Housing Affordability Measures for Canada, ownership costs as a percent of median household income, showing single-detached, aggregate, and condo apartment lines, with the condo line visually near 2017 levels.">
         </div>
       </div>
@@ -361,7 +276,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -369,7 +284,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">RBC Q2 2026 · Canada</span>
       <h2 style="margin-bottom:16px">Income was the only thing helping affordability in Q2.</h2>
       <div class="chart-stage">
-        <div class="chart-frame">
+        <div class="chart-frame image-card"><span class="orig-tag">Original chart · RBC Economics · series not published</span>
           <img src="./rbc-housing-affordability-income-q2.jpg" alt="RBC chart showing contributions to quarterly changes in the national aggregate affordability measure, with household income as the only helper in Q2 2026.">
         </div>
       </div>
@@ -381,7 +296,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -389,22 +304,22 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       <span class="kicker">Framing · opinion, not a forecast</span>
       <h2 style="margin-bottom:18px">What the AI/equity unwind means for Canadian real estate.</h2>
       <div class="frame-grid">
-        <div class="frame-card">
+        <div class="frame-card reveal">
           <div class="num">01 · Rates come first</div>
           <h3>The 5-year follows the bond bid.</h3>
           <p>A flight to bonds pulls down the 5-year GoC yield, and 5-year fixed rates follow. The 9-day bill is the front-end stress tell. Bank stress is the offset: tighter credit pushes against that rates tailwind. This builds on RBC’s point that income was the only thing helping affordability.</p>
         </div>
-        <div class="frame-card">
+        <div class="frame-card reveal">
           <div class="num">02 · Then the wealth effect</div>
           <h3>Tech-heavy buyers get hit first.</h3>
           <p>GTA detached and investor-condo buyers hold a lot of tech and AI stock. Move-up, luxury and 905 detached go first, and the last investor bid for condos disappears.</p>
         </div>
-        <div class="frame-card">
+        <div class="frame-card reveal">
           <div class="num">03 · Safe haven</div>
           <h3>T-bills, gold and USD.</h3>
           <p>Not illiquid, leveraged real estate. A rotation into hard assets, if it comes, comes later.</p>
         </div>
-        <div class="frame-card">
+        <div class="frame-card reveal">
           <div class="num">04 · Jobs decide it</div>
           <h3>2001 versus 2008.</h3>
           <p>In 2001 rates collapsed, jobs held, and housing was fine. The take: rates-positive, confidence-negative. Watch the 5-year yield and January’s jobs data.</p>
@@ -417,7 +332,7 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
       
       <div class="topbar">
         <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
-          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
         </a>
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
@@ -437,269 +352,228 @@ h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacin
     </div>
   </div>
   <script src="./chart.umd.min.js"></script>
+  <script src="./deck-data.js"></script>
+  <script src="./deck.js"></script>
   <script>
 (function(){
-  const slides = Array.from(document.querySelectorAll(".slide"));
-  const progress = document.querySelector(".progress > span");
-  const counter = document.querySelector(".counter");
-  const prevBtn = document.querySelector("[data-prev]");
-  const nextBtn = document.querySelector("[data-next]");
-  const deck = document.querySelector(".deck");
-  let i = 0;
-
-  function go(n){
-    i = Math.max(0, Math.min(slides.length - 1, n));
-    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
-    const pct = ((i + 1) / slides.length) * 100;
-    if (progress) progress.style.width = pct + "%";
-    if (counter) counter.textContent = (i + 1) + " / " + slides.length;
-    if (prevBtn) prevBtn.disabled = i === 0;
-    if (nextBtn) nextBtn.disabled = i === slides.length - 1;
-    if (deck) deck.classList.toggle("is-ink", slides[i].classList.contains("theme-ink"));
-    history.replaceState(null, "", "#" + (i + 1));
-    window.dispatchEvent(new CustomEvent("deck:change", { detail: { index: i, slide: slides[i] } }));
+  const T = Deck.theme, D = window.DECK_DATA || {};
+  const alpha = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
+  const ok = (el) => el && Number.isFinite(el.x) && Number.isFinite(el.y);
+  // Small text label with a dark halo, for on-chart callouts.
+  function tag(ctx, text, x, y, { color = T.text, align = "left", base = "bottom", size = 14, weight = 700 } = {}){
+    ctx.save();
+    ctx.font = `${weight} ${size}px "DM Sans", sans-serif`;
+    ctx.textAlign = align; ctx.textBaseline = base;
+    ctx.lineWidth = 5; ctx.strokeStyle = "rgba(6,19,29,.9)"; ctx.lineJoin = "round";
+    ctx.strokeText(text, x, y); ctx.fillStyle = color; ctx.fillText(text, x, y);
+    ctx.restore();
   }
-
-  function fromHash(){
-    const n = parseInt((location.hash || "#1").slice(1), 10);
-    go(Number.isFinite(n) ? n - 1 : 0);
+  function hline(chart, value, color, label, { dash = [6, 5], side = "left" } = {}){
+    const { ctx, chartArea: { left, right } } = chart, y = chart.scales.y.getPixelForValue(value);
+    ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.setLineDash(dash);
+    ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(right, y); ctx.stroke(); ctx.restore();
+    if (label) tag(ctx, label, side === "left" ? left + 8 : right - 8, y - 6, { color, align: side === "left" ? "left" : "right", size: 13 });
   }
+  const pt = (chart, ds, i) => chart.getDatasetMeta(ds).data[i];
 
-  document.addEventListener("keydown", (e) => {
-    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
-    const next = ["ArrowRight","ArrowDown","PageDown"," ","Space","j","J"];
-    const prev = ["ArrowLeft","ArrowUp","PageUp","Backspace","k","K"];
-    if (next.includes(e.key)) { e.preventDefault(); go(i + 1); }
-    else if (prev.includes(e.key)) { e.preventDefault(); go(i - 1); }
-    else if (e.key === "Home") { e.preventDefault(); go(0); }
-    else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
+  /* Slide 2 · Nasdaq Composite YTD, FRED NASDAQCOM */
+  Deck.chart("nasdaq-ytd", () => {
+    const N = D.nasdaq, closes = N.closes, base = N.close2025, SNAP = 23215.22;
+    const labels = closes.map(c => c[0]).concat(["2026-11-20T11:04"]);
+    const vals = closes.map(c => c[1]).concat([null]);
+    const last = closes.length - 1;
+    const peakI = vals.indexOf(Math.max(...vals.slice(0, -1)));
+    const snapLine = labels.map((_, i) => i === last ? vals[last] : i === last + 1 ? SNAP : null);
+    const lo = Math.min(...vals.filter(v => v != null), SNAP), hi = Math.max(...vals.filter(v => v != null));
+    const ytd = (v) => ((v / base - 1) * 100).toFixed(2);
+    return {
+      type: "line",
+      data: { labels, datasets: [
+        { data: vals, borderColor: T.teal, borderWidth: 3, pointRadius: 0, tension: 0.15,
+          fill: { target: { value: base }, above: alpha(T.teal, 0.14), below: alpha(T.red, 0.18) } },
+        { data: snapLine, borderColor: T.red, borderWidth: 3, borderDash: [4, 4], spanGaps: true,
+          pointRadius: labels.map((_, i) => i === last + 1 ? 7 : 0), pointBackgroundColor: T.red, pointBorderWidth: 0 }
+      ]},
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(labels.length, 1800),
+        interaction: { mode: "index", intersect: false },
+        layout: { padding: { right: 20, top: 30 } },
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: {
+            title: (it) => it[0].label.includes("T") ? "Nov 20, 11:04 AM ET snapshot" : new Date(it[0].label + "T12:00:00").toLocaleDateString("en-CA", { month: "short", day: "numeric", year: "numeric" }),
+            label: (c) => c.raw == null ? null : (c.datasetIndex === 1 && c.dataIndex === last ? null : Deck.fmt(c.raw, 2) + "  (" + ytd(c.raw) + "% YTD)") } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { autoSkip: false, maxRotation: 0, font: { size: 15 },
+            callback(v, i){ const l = labels[i]; if (l.includes("T")) return ""; const p = labels[i - 1]; return !p || p.slice(5, 7) !== l.slice(5, 7) ? new Date(l + "T12:00:00").toLocaleDateString("en-CA", { month: "short" }) : ""; } } },
+          y: { min: Math.floor((lo - 800) / 1000) * 1000, max: Math.ceil((hi + 600) / 1000) * 1000,
+            ticks: { font: { size: 15 }, callback: (v) => Deck.fmt(v) }, grid: { color: T.grid } }
+        }
+      },
+      plugins: [{ id: "nasdaqNotes", afterDatasetsDraw(chart){
+        hline(chart, base, T.muted, "2025 close 23,241.99");
+        const ctx = chart.ctx, pk = pt(chart, 0, peakI), z = pt(chart, 0, last), s = pt(chart, 1, last + 1);
+        if (ok(pk)) { tag(ctx, "Oct 6 peak · +" + ytd(vals[peakI]) + "% YTD", pk.x, pk.y - 12, { align: "center", color: T.teal }); }
+        if (ok(z)) tag(ctx, "Nov 19 close 23,879.20 · +" + ytd(vals[last]) + "%", z.x - 10, z.y - 14, { align: "right" });
+        if (ok(s)) tag(ctx, "Nov 20, 11:04 AM · 23,215.22", s.x - 12, s.y + 26, { align: "right", color: T.red, base: "top" });
+      } }]
+    };
   });
 
-  let startX = null;
-  document.addEventListener("touchstart", (e) => {
-    if (e.changedTouches[0]) startX = e.changedTouches[0].clientX;
-  }, { passive: true });
-  document.addEventListener("touchend", (e) => {
-    if (startX == null || !e.changedTouches[0]) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    startX = null;
-    if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1));
-  }, { passive: true });
+  /* Slide 4 · Anthropic price path (verified prints, unchanged) */
+  Deck.chart("anthropic-path", () => {
+    const labels = ["IPO price", "Thu open", "Thu high", "Thu close", "Fri session low"];
+    const data = [83, 111.5, 115.1, 97.17, 83.05];
+    const txt = ["$83 IPO", "$111.50", "$115.10", "$97.17", "$83.05 low"];
+    return {
+      type: "line",
+      data: { labels, datasets: [{ data, borderColor: T.teal, borderWidth: 3, tension: 0.15, fill: false,
+        pointRadius: 7, pointBorderWidth: 0, pointBackgroundColor: [T.muted, T.teal, T.teal, T.teal, T.red] }] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(data.length, 1400),
+        layout: { padding: { top: 24, left: 10, right: 30 } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ["IPO $83", "Thursday open $111.50", "Thursday high $115.10", "Thursday close $97.17", "Friday session low $83.05 (Fortune) — not a close"][c.dataIndex] } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: T.text, font: { size: 15, weight: 600 } } },
+          y: { min: 70, max: 125, ticks: { font: { size: 15 }, callback: (v) => "$" + v }, grid: { color: T.grid } }
+        }
+      },
+      plugins: [{ id: "antNotes", afterDatasetsDraw(chart){
+        hline(chart, 83, alpha(T.red, .7), null);
+        chart.getDatasetMeta(0).data.forEach((p, i) => { if (ok(p)) tag(chart.ctx, txt[i], i === 4 ? p.x - 4 : i === 0 ? p.x + 4 : p.x, p.y - 14, { align: i === 4 ? "right" : i === 0 ? "left" : "center", color: i === 4 ? T.red : T.text }); });
+      } }]
+    };
+  });
 
-  if (prevBtn) prevBtn.addEventListener("click", () => go(i - 1));
-  if (nextBtn) nextBtn.addEventListener("click", () => go(i + 1));
-  window.addEventListener("hashchange", fromHash);
-  fromHash();
-})();
-</script>
-  <script>
-function drawPensionsShare(){
-  const el = document.getElementById("pensions-share");
-  if (!el || !window.Chart || el.dataset.ready) return;
-  const ink = "#183d47";
-  new Chart(el, {
+  /* Slide 6 · CNN Fear & Greed, CNN graph data */
+  Deck.chart("fear-greed", () => {
+    const daily = D.fearGreed.daily, SNAP = 14;
+    const labels = daily.map(d => d[0]).concat(["2026-11-20T11:05"]);
+    const vals = daily.map(d => d[1]).concat([SNAP]);
+    let lowI = -1; daily.forEach((d, i) => { if (d[0] >= "2026-01-01" && (lowI < 0 || d[1] < daily[lowI][1])) lowI = i; });
+    const bands = [[0, 25, T.red, .16, "Extreme Fear"], [25, 45, T.red, .07, "Fear"], [45, 55, T.muted, .05, "Neutral"], [55, 75, T.teal, .07, "Greed"], [75, 100, T.teal, .15, "Extreme Greed"]];
+    const n = labels.length;
+    return {
+      type: "line",
+      data: { labels, datasets: [{ data: vals, borderColor: T.text, borderWidth: 2.25, tension: 0.2,
+        pointRadius: labels.map((_, i) => i === n - 1 ? 8 : 0), pointBackgroundColor: T.red, pointBorderWidth: 0,
+        segment: { borderColor: (c) => c.p1DataIndex === n - 1 ? T.red : undefined } }] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(n, 1800),
+        interaction: { mode: "index", intersect: false }, layout: { padding: { right: 10, top: 10 } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          title: (it) => it[0].label.includes("T") ? "Nov 20, 11:05 AM ET snapshot" : new Date(it[0].label + "T12:00:00").toLocaleDateString("en-CA", { month: "short", day: "numeric", year: "numeric" }),
+          label: (c) => "Index " + c.raw.toFixed(c.dataIndex === n - 1 ? 0 : 1) } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { autoSkip: false, maxRotation: 0, font: { size: 15 },
+            callback(v, i){ const l = labels[i]; if (l.includes("T")) return ""; const p = labels[i - 1]; return p && p.slice(5, 7) !== l.slice(5, 7) ? new Date(l + "T12:00:00").toLocaleDateString("en-CA", { month: "short" }) : ""; } } },
+          y: { min: 0, max: 100, ticks: { stepSize: 25, font: { size: 15 } }, grid: { color: T.grid } }
+        }
+      },
+      plugins: [{ id: "fgBands",
+        beforeDatasetsDraw(chart){
+          const { ctx, chartArea: { left, right } } = chart, y = chart.scales.y;
+          bands.forEach(([a, b, c, o, name]) => {
+            ctx.fillStyle = alpha(c, o); ctx.fillRect(left, y.getPixelForValue(b), right - left, y.getPixelForValue(a) - y.getPixelForValue(b));
+            tag(ctx, name.toUpperCase(), left + 10, (y.getPixelForValue(a) + y.getPixelForValue(b)) / 2, { base: "middle", size: 11, color: alpha(c === T.muted ? "#9fb6c6" : c, .9) });
+          });
+        },
+        afterDatasetsDraw(chart){
+          const lo = pt(chart, 0, lowI), s = pt(chart, 0, n - 1);
+          if (ok(lo)) tag(chart.ctx, "2026 low " + daily[lowI][1].toFixed(1) + " · " + new Date(daily[lowI][0] + "T12:00:00").toLocaleDateString("en-CA", { month: "short", day: "numeric" }), lo.x, lo.y + 12, { align: "center", base: "top" });
+          if (ok(s)) tag(chart.ctx, "14", s.x - 14, s.y, { align: "right", base: "middle", color: T.red, size: 18 });
+        } }]
+    };
+  });
+
+  /* Slide 8 · every 9-day bill auction, Treasury Fiscal Data + TreasuryDirect */
+  Deck.chart("nine-day-bills", () => {
+    const A = D.nineDayBills.auctions;
+    const labels = A.map(a => new Date(a[0] + "T12:00:00").toLocaleDateString("en-CA", { month: "short", year: "numeric" }));
+    const data = A.map(a => a[1]), lastI = A.length - 1;
+    return {
+      type: "bar",
+      data: { labels, datasets: [{ data, borderRadius: 6, borderSkipped: false, barPercentage: .7,
+        backgroundColor: A.map((_, i) => i === lastI ? T.red : alpha(T.teal, .8)) }] },
+      options: {
+        responsive: true, maintainAspectRatio: false, layout: { padding: { top: 34 } },
+        animation: Deck.reduce ? false : { duration: 900, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 110 : 0 },
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          title: (it) => A[it[0].dataIndex][0] + " auction",
+          label: (c) => { const a = A[c.dataIndex]; return ["$" + a[1] + "B offered", "High discount rate " + a[2].toFixed(3) + "%", "CUSIP " + a[3]]; } } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: T.text, font: { size: 15, weight: 600 } } },
+          y: { beginAtZero: true, max: 35, ticks: { font: { size: 15 }, callback: (v) => "$" + v + "B" }, grid: { color: T.grid },
+            title: { display: true, text: "Offering size", color: T.muted, font: { size: 13 } } }
+        }
+      },
+      plugins: [{ id: "billLabels", afterDatasetsDraw(chart){
+        chart.getDatasetMeta(0).data.forEach((b, i) => {
+          if (!ok(b) || Math.abs(b.base - b.y) < 4) return;
+          tag(chart.ctx, "$" + data[i] + "B", b.x, b.y - 8, { align: "center", color: i === lastI ? T.red : T.text, size: i === lastI ? 18 : 14 });
+          if (i === lastI) tag(chart.ctx, "Nov 19, 2026 · first since 2008", b.x - b.width / 2 - 8, b.y - 34, { align: "right", color: T.red, size: 14 });
+        });
+      } }]
+    };
+  });
+
+  /* Slide 9 · US bank drawdowns (verified mid-session figures, unchanged) */
+  Deck.chart("bank-drawdowns", () => {
+    const labels = ["BAC", "WFC", "GS", "MS", "COF", "C", "KBW"];
+    const values = [27.2, 18.8, 31.2, 28.3, 30.8, 24.7, 18.2];
+    const notes = ["BAC −27.2% from $65.23 (Aug 17)", "WFC −18.8% from $97.76 (Jan 5) — not in bear territory on this print", "GS −31.2% from $1,153.99 (Jul 15)", "MS −28.3% from $232.25 (Jul 15)", "COF −30.8% from $259.64 (Jan 6)", "C −24.7% from $147.96 (Jun 18)", "KBW (^BKX) −18.2% from 195.55 (Aug 17)"];
+    return {
+      type: "bar",
+      data: { labels, datasets: [{ data: values, borderRadius: 6, borderSkipped: false, barPercentage: .72, categoryPercentage: .8,
+        backgroundColor: values.map(v => v >= 20 ? T.red : T.teal) }] },
+      options: {
+        indexAxis: "y", responsive: true, maintainAspectRatio: false, layout: { padding: { right: 70 } },
+        animation: Deck.reduce ? false : { duration: 1000, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 120 : 0 },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => notes[c.dataIndex] } } },
+        scales: {
+          x: { min: 0, max: 35, ticks: { font: { size: 15 }, callback: (v) => v + "%" }, grid: { color: T.grid },
+            title: { display: true, text: "% below 52-week high, mid-session", color: T.muted, font: { size: 13 } } },
+          y: { grid: { display: false }, ticks: { color: T.text, font: { size: 16, weight: 700 } } }
+        }
+      },
+      plugins: [{ id: "bearLine", afterDatasetsDraw(chart){
+        const { ctx, chartArea: { top, bottom } } = chart, x = chart.scales.x.getPixelForValue(20);
+        ctx.save(); ctx.strokeStyle = T.text; ctx.globalAlpha = .7; ctx.setLineDash([5, 4]); ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x, top); ctx.lineTo(x, bottom); ctx.stroke(); ctx.restore();
+        tag(ctx, "20% bear threshold", x + 8, top + 2, { base: "top", size: 13, color: T.muted });
+        chart.getDatasetMeta(0).data.forEach((b, i) => {
+          if (!ok(b)) return;
+          const shown = chart.scales.x.getValueForPixel(b.x);
+          tag(ctx, "−" + Math.max(0, Math.min(values[i], shown)).toFixed(1) + "%", b.x + 10, b.y, { base: "middle", size: 16 });
+        });
+      } }]
+    };
+  });
+
+  /* Slide 11 · FT's stated 1-in-4 share only */
+  Deck.chart("pensions-share", () => ({
     type: "doughnut",
-    data: {
-      labels: ["Pensions", "All other public goods and services"],
-      datasets: [{
-        data: [1, 3],
-        backgroundColor: ["#ed3c4d", "#227e90"],
-        borderWidth: 0
-      }]
-    },
+    data: { labels: ["Pensions", "All other public goods and services"],
+      datasets: [{ data: [1, 3], backgroundColor: [T.red, alpha(T.teal, .55)], borderWidth: 0, hoverOffset: 6 }] },
     options: {
-      animation: { duration: 0 },
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: "62%",
+      responsive: true, maintainAspectRatio: false, cutout: "64%",
+      animation: Deck.reduce ? false : { animateRotate: true, duration: 1300, easing: "easeOutCubic" },
       plugins: {
-        legend: {
-          position: "bottom",
-          labels: { color: ink, font: { family: "DM Sans", size: 14 }, padding: 18 }
-        },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ctx.label === "Pensions" ? "1 in 4 euros (FT #shorts)" : "3 in 4 euros"
-          }
-        }
+        legend: { position: "bottom", labels: { color: T.text, font: { size: 16 }, padding: 20, usePointStyle: true } },
+        tooltip: { callbacks: { label: (c) => c.dataIndex === 0 ? "1 in 4 euros (FT #shorts)" : "3 in 4 euros" } }
       }
-    }
-  });
-  el.dataset.ready = "1";
-}
-
-function drawAnthropic(){
-  const el = document.getElementById("anthropic-path");
-  if (!el || !window.Chart || el.dataset.ready) return;
-  const ink = "#183d47";
-  new Chart(el, {
-    type: "line",
-    data: {
-      labels: ["IPO price", "Thu open", "Thu high", "Thu close", "Fri session low"],
-      datasets: [{
-        label: "ANT, USD",
-        data: [83, 111.5, 115.1, 97.17, 83.05],
-        borderColor: "#227e90",
-        backgroundColor: "rgba(34,126,144,.12)",
-        pointBackgroundColor: ["#183d47", "#227e90", "#227e90", "#227e90", "#ed3c4d"],
-        pointRadius: 5,
-        pointHoverRadius: 6,
-        tension: 0.15,
-        fill: false
-      }]
     },
-    options: {
-      animation: { duration: 0 },
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => {
-              const notes = {
-                0: "IPO $83",
-                1: "Thursday open $111.50",
-                2: "Thursday high $115.10",
-                3: "Thursday close $97.17",
-                4: "Friday session low $83.05 (Fortune) — not a close"
-              };
-              return notes[ctx.dataIndex] || ctx.formattedValue;
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          ticks: { color: ink, font: { family: "DM Sans", size: 11 }, maxRotation: 30, minRotation: 0 },
-          grid: { display: false }
-        },
-        y: {
-          min: 70,
-          max: 125,
-          ticks: {
-            color: "#5c6e70",
-            font: { family: "DM Sans" },
-            callback: (v) => "$" + v
-          },
-          grid: { color: "#d5d6cc" }
-        }
-      }
-    }
-  });
-  el.dataset.ready = "1";
-}
-
-function drawBanks(){
-  const el = document.getElementById("bank-drawdowns");
-  if (!el || !window.Chart || el.dataset.ready) return;
-  const ink = "#183d47";
-  const bear = "#ed3c4d";
-  const teal = "#227e90";
-  const values = [27.2, 18.8, 31.2, 28.3, 30.8, 24.7, 18.2];
-  const colors = values.map((v) => v >= 20 ? bear : teal);
-  const bearLine = {
-    id: "bearLine",
-    afterDraw(chart){
-      const xScale = chart.scales.x;
-      const { top, bottom } = chart.chartArea;
-      const x = xScale.getPixelForValue(20);
-      const ctx = chart.ctx;
-      ctx.save();
-      ctx.strokeStyle = ink;
-      ctx.lineWidth = 1;
-      ctx.setLineDash([5, 4]);
-      ctx.beginPath();
-      ctx.moveTo(x, top);
-      ctx.lineTo(x, bottom);
-      ctx.stroke();
-      ctx.setLineDash([]);
-      ctx.fillStyle = ink;
-      ctx.font = "600 11px DM Sans, sans-serif";
-      ctx.textAlign = "left";
-      ctx.fillText("20% bear threshold", x + 6, bottom - 8);
-      // value labels at the end of each bar
-      const meta = chart.getDatasetMeta(0);
-      ctx.font = "700 12px DM Sans, sans-serif";
-      ctx.textBaseline = "middle";
-      meta.data.forEach((bar, i) => {
-        const v = chart.data.datasets[0].data[i];
-        const txt = v.toFixed(1) + "%";
-        const inside = v >= 22;
-        ctx.fillStyle = inside ? "#fdf7ee" : ink;
-        ctx.textAlign = inside ? "right" : "left";
-        ctx.fillText(txt, bar.x + (inside ? -8 : 8), bar.y);
-      });
+    plugins: [{ id: "center", afterDraw(chart){
+      const m = chart.getDatasetMeta(0).data[0]; if (!m) return;
+      const { ctx } = chart;
+      ctx.save(); ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillStyle = T.text;
+      ctx.font = '400 64px "DM Serif Display", serif'; ctx.fillText("1 in 4", m.x, m.y - 8);
+      ctx.font = '700 13px Manrope, sans-serif'; ctx.fillStyle = T.muted; ctx.fillText("EUROS TO PENSIONS", m.x, m.y + 34);
       ctx.restore();
-    }
-  };
-  new Chart(el, {
-    type: "bar",
-    plugins: [bearLine],
-    data: {
-      labels: ["BAC", "WFC", "GS", "MS", "COF", "C", "KBW"],
-      datasets: [{
-        label: "% below 52-week high",
-        data: values,
-        backgroundColor: colors,
-        borderWidth: 0,
-        barPercentage: 0.72,
-        categoryPercentage: 0.8
-      }]
-    },
-    options: {
-      indexAxis: "y",
-      animation: { duration: 0 },
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => {
-              const notes = {
-                0: "BAC −27.2% from $65.23 (Aug 17)",
-                1: "WFC −18.8% from $97.76 (Jan 5) — not in bear territory on this print",
-                2: "GS −31.2% from $1,153.99 (Jul 15)",
-                3: "MS −28.3% from $232.25 (Jul 15)",
-                4: "COF −30.8% from $259.64 (Jan 6)",
-                5: "C −24.7% from $147.96 (Jun 18)",
-                6: "KBW (^BKX) −18.2% from 195.55 (Aug 17)"
-              };
-              return notes[ctx.dataIndex] || ctx.formattedValue;
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          min: 0,
-          max: 36,
-          title: { display: true, text: "% below 52-week high, mid-session", color: "#5c6e70", font: { family: "DM Sans", size: 11 } },
-          ticks: {
-            color: "#5c6e70",
-            font: { family: "DM Sans" },
-            callback: (v) => v + "%"
-          },
-          grid: { color: "#d5d6cc" }
-        },
-        y: {
-          ticks: { color: ink, font: { family: "DM Sans", size: 13, weight: "600" } },
-          grid: { display: false }
-        }
-      }
-    }
-  });
-  el.dataset.ready = "1";
-}
+    } }]
+  }));
 
-function drawAll(){
-  drawPensionsShare();
-  drawAnthropic();
-  drawBanks();
-}
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", drawAll);
-else drawAll();
+  Deck.start();
+})();
 </script>
 </body>
 </html>

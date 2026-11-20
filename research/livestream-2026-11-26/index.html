@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <base href="./">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Livestream notes, Nov 26, 2026 | TCI Podcast Network</title>
+  <link rel="icon" href="./logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+:root{
+  --paper:#fdf7ee;--ink:#183d47;--red:#ed3c4d;--teal:#227e90;
+  --line:#d5d6cc;--muted:#5c6e70;--panel:#fff;--accent:#ed3c4d;
+  --shadow:0 18px 50px rgba(24,61,71,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);
+  font:18px/1.5 "DM Sans",sans-serif;overflow:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+.deck{height:100%;width:100%;position:relative}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:clamp(28px,4.5vh,56px) clamp(28px,6vw,88px) 72px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(18px);transition:opacity .35s ease,transform .35s ease,visibility 0s linear .35s;
+}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:none}
+.slide.theme-ink{background:#183d47;color:#fdf7ee}
+.slide.theme-ink .muted,.slide.theme-ink .credit,.slide.theme-ink .kicker{color:#bcd0d4}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:clamp(18px,4vh,40px)}
+.brand-mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark img{height:56px;width:auto;display:block;background:transparent}
+.brand-mark span{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.03em;font-size:14px;line-height:1.15}
+.brand-mark small{display:block;font-size:9px;letter-spacing:.28em;font-weight:600;margin-top:3px}
+.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700}
+h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacing:-.04em;line-height:1.05;margin:0}
+.one-liner h1{font-size:clamp(2.6rem,6.6vw,5.6rem);max-width:18ch}
+.one-liner{justify-content:center}
+.title-slide{justify-content:center}
+.title-slide h1{font-size:clamp(3rem,7vw,6.2rem);max-width:14ch}
+.title-slide .lede{margin-top:28px;font-size:clamp(1.05rem,2vw,1.35rem);max-width:34rem;color:var(--muted)}
+.theme-ink .title-slide .lede,.slide.theme-ink .lede{color:#d3e2e4}
+.chart-stage{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:22px}
+.chart-stage.has-aside{grid-template-columns:minmax(0,1.4fr) minmax(220px,.7fr)}
+.chart-frame{background:var(--panel);border:1px solid var(--line);padding:18px;display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden}
+.slide.theme-ink .chart-frame{background:#102830;border-color:#2a4a52}
+.chart-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.chart-wrap{position:relative;width:min(100%,520px);height:min(100%,520px);max-height:100%;margin:auto;min-height:240px}
+.chart-wrap canvas{width:100%!important;height:100%!important}
+.aside{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.aside p{margin:0;font-size:1.05rem}
+.credit{margin-top:auto;padding-top:18px;font-size:13px;color:var(--muted);max-width:70rem}
+.credit a{text-underline-offset:3px}
+.footerbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:5;
+  display:flex;align-items:center;gap:16px;
+  padding:10px clamp(20px,5vw,72px) 14px;
+  background:linear-gradient(180deg,transparent,rgba(253,247,238,.92) 36%);
+}
+.slide.theme-ink ~ .footerbar,.deck.is-ink .footerbar{background:linear-gradient(180deg,transparent,rgba(24,61,71,.92) 36%);color:#fdf7ee}
+.progress{flex:1;height:3px;background:var(--line);position:relative}
+.progress > span{position:absolute;inset:0 auto 0 0;background:var(--accent);width:0}
+.counter{font-size:12px;font-weight:700;letter-spacing:.08em;min-width:4.5em}
+.navbtns{display:flex;gap:8px}
+.navbtns button{
+  width:42px;height:42px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+  font-size:20px;line-height:1;
+}
+.deck.is-ink .navbtns button,.slide.theme-ink ~ .footerbar .navbtns button{border-color:#fdf7ee;background:#fdf7ee;color:#183d47}
+.navbtns button:disabled{opacity:.4}
+.navbtns button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.navbtns button:disabled{opacity:.35;cursor:default}
+.hint{margin-top:36px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:800px){
+  .chart-stage.has-aside{grid-template-columns:1fr}
+  .brand-mark img{height:42px}
+  .slide{padding:22px 20px 78px}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide{transition:none}
+}
+</style>
+</head>
+<body>
+  <div class="deck">
+    
+    <section class="slide title-slide theme-ink" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Thursday, Nov 26, 2026 · 12:00 PM ET</span>
+      <h1>Pensions, transfers, and a year gone red.</h1>
+      <p class="lede">Talking points for Dan Foch and Simon Bélanger. Richard Dias, CFA, may join. Arrow keys or swipe to move.</p>
+      <p class="hint">Press → to start</p>
+    </section>
+
+    <section class="slide one-liner" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">One-liner</span>
+      <h1>Pensions now eat one in four euros of public spending in France, Spain and Italy.</h1>
+      <p class="credit">Source: Financial Times / John Burn-Murdoch, “How pensions ate the state,” official FT #shorts accompanying the Nov 20, 2026 Big Read. The 1-in-4 figure is the FT’s, for spending on public goods and services in those three countries.</p>
+    </section>
+
+    <section class="slide" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">The chart</span>
+      <h2 style="margin-bottom:16px">Young-to-old transfers got a lot larger.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame">
+          <img src="./pensions-ate-the-state-chart.jpg" alt="FT chart: Economic transfers from young to old have become far larger. Taxes paid versus benefits and services received per person, by age, inflation-adjusted, for the US and UK in 1979 and 2024.">
+        </div>
+      </div>
+      <p class="credit">Source: John Burn-Murdoch, Financial Times, “How pensions ate the state,” published Nov 20, 2026. Chart title on the original: “Economic transfers from young to old have become far larger.” Taxes paid vs benefits and services received per person, by age, inflation-adjusted ($ or £, 000s), US and UK, 1979 vs 2024. Image from the FT post (https://www.ft.com/content/6986a3b5-12ed-4aad-ac61-f86ded3e6fa3).</p>
+    </section>
+
+    <section class="slide one-liner theme-ink" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Talk with Simon</span>
+      <h1>If the US and UK transfer to the old got this much larger, what does the Canadian version of this chart look like?</h1>
+      <p class="credit">Discussion prompt from the livestream notes. Not a finding — a question for the show.</p>
+    </section>
+
+    <section class="slide one-liner" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">One-liner</span>
+      <h1>The Nasdaq slipped negative for 2026 — giving back a peak gain of about 19%.</h1>
+      <p class="credit">The “+19%” is the peak year-to-date gain that was given back, not the print at the moment of the screenshot. See the next slide for the mid-session source image and the caveat.</p>
+    </section>
+
+    <section class="slide" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">The chart · mid-session</span>
+      <h2 style="margin-bottom:16px">Just under the 2025 close, as of 11:04 AM ET.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame" style="background:#111;">
+          <img src="./nasdaq-composite-ytd-2026-kobeissi.png" alt="TradingView YTD chart of the Nasdaq Composite on Nov 20, 2026 at 11:04 AM ET, showing 23,215.22, down 0.09% on the session, just below the 2025 close.">
+        </div>
+      </div>
+      <p class="credit">Source: TradingView screenshot of Nasdaq Composite (INDEXNASDAQ: IXIC), Nov 20, 2026, 11:04 AM ET, circulated with The Kobeissi Letter post “BREAKING: The Nasdaq Composite officially turns negative for 2026, erasing a gain of +19%.” The screenshot is mid-session, not the official Friday close. At that timestamp the index was 23,215.22, down 0.09% on the day, and had just slipped slightly below the 2025 close. Confirm the official Nov 20 close before going on air.</p>
+    </section>
+
+    <section class="slide" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">The 1-in-4 claim, visualized</span>
+      <h2 style="margin-bottom:16px">One euro in four.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="pensions-share" aria-label="Donut chart: one in four euros of public goods and services spending in France, Spain and Italy goes to pensions."></canvas></div></div>
+        <div class="aside">
+          <p>This is just the FT #shorts figure, drawn as a share: pensions versus everything else in that public-goods-and-services bucket, for France, Spain and Italy.</p>
+          <p class="muted">It is not a G7 average, and it is not a Canadian number.</p>
+        </div>
+      </div>
+      <p class="credit">Source: Financial Times / John Burn-Murdoch official #shorts, Nov 20, 2026. Chart.js visualization of that stated 1-in-4 share only — no other values were estimated from the FT graphic.</p>
+    </section>
+
+    <section class="slide title-slide theme-ink" data-slide>
+      
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-mark.png" width="500" height="500" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">That’s the stack</span>
+      <h1>Go build the Canadian chart.</h1>
+      <p class="lede">Sources: FT Big Read, the FT #shorts, and the Kobeissi / TradingView Nasdaq snapshot. Notes page for Simon, then this deck at tcipodcast.ca/research.</p>
+    </section>
+
+    <div class="footerbar">
+      <div class="progress" aria-hidden="true"><span></span></div>
+      <div class="counter">1 / 1</div>
+      <div class="navbtns">
+        <button type="button" data-prev aria-label="Previous slide">‹</button>
+        <button type="button" data-next aria-label="Next slide">›</button>
+      </div>
+    </div>
+  </div>
+  <script src="./chart.umd.min.js"></script>
+  <script>
+(function(){
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const progress = document.querySelector(".progress > span");
+  const counter = document.querySelector(".counter");
+  const prevBtn = document.querySelector("[data-prev]");
+  const nextBtn = document.querySelector("[data-next]");
+  const deck = document.querySelector(".deck");
+  let i = 0;
+
+  function go(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle("active", idx === i));
+    const pct = ((i + 1) / slides.length) * 100;
+    if (progress) progress.style.width = pct + "%";
+    if (counter) counter.textContent = (i + 1) + " / " + slides.length;
+    if (prevBtn) prevBtn.disabled = i === 0;
+    if (nextBtn) nextBtn.disabled = i === slides.length - 1;
+    if (deck) deck.classList.toggle("is-ink", slides[i].classList.contains("theme-ink"));
+    history.replaceState(null, "", "#" + (i + 1));
+    window.dispatchEvent(new CustomEvent("deck:change", { detail: { index: i, slide: slides[i] } }));
+  }
+
+  function fromHash(){
+    const n = parseInt((location.hash || "#1").slice(1), 10);
+    go(Number.isFinite(n) ? n - 1 : 0);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+    const next = ["ArrowRight","ArrowDown","PageDown"," ","Space","j","J"];
+    const prev = ["ArrowLeft","ArrowUp","PageUp","Backspace","k","K"];
+    if (next.includes(e.key)) { e.preventDefault(); go(i + 1); }
+    else if (prev.includes(e.key)) { e.preventDefault(); go(i - 1); }
+    else if (e.key === "Home") { e.preventDefault(); go(0); }
+    else if (e.key === "End") { e.preventDefault(); go(slides.length - 1); }
+  });
+
+  let startX = null;
+  document.addEventListener("touchstart", (e) => {
+    if (e.changedTouches[0]) startX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  document.addEventListener("touchend", (e) => {
+    if (startX == null || !e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 48) go(i + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  if (prevBtn) prevBtn.addEventListener("click", () => go(i - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => go(i + 1));
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
+  <script>
+function drawPensionsShare(){
+  const el = document.getElementById("pensions-share");
+  if (!el || !window.Chart || el.dataset.ready) return;
+  const ink = "#183d47";
+  new Chart(el, {
+    type: "doughnut",
+    data: {
+      labels: ["Pensions", "All other public goods and services"],
+      datasets: [{
+        data: [1, 3],
+        backgroundColor: ["#ed3c4d", "#227e90"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 0 },
+      cutout: "62%",
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: { color: ink, font: { family: "DM Sans", size: 14 }, padding: 18 }
+        },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ctx.label === "Pensions" ? "1 in 4 euros (FT #shorts)" : "3 in 4 euros"
+          }
+        }
+      }
+    }
+  });
+  el.dataset.ready = "1";
+}
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", drawPensionsShare);
+else drawPensionsShare();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <base href="../">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <title>Research | TCI Podcast Network</title>
+  <meta name="description" content="Chart decks and livestream notes for The Canadian Investor. Built for Dan Foch and Simon Bélanger.">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .research-list{display:grid;gap:22px;margin:36px 0 64px}
+    .research-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:28px 32px;background:var(--panel);border:1px solid var(--line)}
+    .research-card h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.7rem;letter-spacing:-.03em;margin:8px 0 10px}
+    .research-card p{margin:0;max-width:46rem;color:var(--muted)}
+    .research-card .btn{white-space:nowrap}
+    @media(max-width:700px){.research-card{grid-template-columns:1fr;padding:24px}.research-card .btn{justify-self:start}}
+  </style>
+</head>
+<body class="concept-5">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site">
+    <div class="container" id="top">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="TCI Podcast Network home">
+          <span class="logo-crop"><img src="assets/logo.webp" alt=""></span>
+          <span>TCI PODCAST<small>NETWORK</small></span>
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a class="follow-nav" href="index.html#shows">Follow a podcast</a>
+          <a href="episodes/index.html">Episodes</a>
+          <a href="blog/index.html">Episode articles</a>
+          <a href="research/index.html" aria-current="page">Research</a>
+          <a href="index.html#hosts">The hosts</a>
+          <a class="btn small" href="https://jointci.com/" target="_blank" rel="noopener">Become a member</a>
+        </nav>
+      </header>
+      <main id="main">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / Research</nav>
+        <section class="reading">
+          <span class="eyebrow">The Canadian Investor</span>
+          <h1>Livestream research.</h1>
+          <p class="dek">Chart-heavy decks of the notes Dan and Simon use on the weekly livestream. These pages are unlisted working documents, not a published research library.</p>
+        </section>
+        <section class="section" aria-labelledby="decks-heading">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Decks</span>
+              <h2 id="decks-heading">This week and prior.</h2>
+            </div>
+          </div>
+          <div class="research-list">
+            <article class="research-card">
+              <div>
+                <span class="eyebrow">Livestream · Thursday, Nov 26, 2026 · 12:00 PM ET</span>
+                <h3><a href="research/livestream-2026-11-26/">Pensions, transfers, and a Nasdaq year gone red</a></h3>
+                <p>FT on how pensions ate the state, plus the Nasdaq Composite slipping negative for 2026. For Dan Foch and Simon Bélanger, with Richard Dias maybe joining.</p>
+              </div>
+              <a class="btn primary" href="research/livestream-2026-11-26/">Open the deck</a>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <a class="brand" href="index.html" aria-label="TCI Podcast Network home">
+          <span class="logo-crop"><img src="assets/logo.webp" alt=""></span>
+          <span>TCI PODCAST<small>NETWORK</small></span>
+        </a>
+        <span>© 2026 TCI Podcast Network Inc.</span>
+        <a href="https://www.youtube.com/@TCIPodcastNetwork" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://twitter.com/cdn_investing" target="_blank" rel="noopener">Follow TCI</a>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

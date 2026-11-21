@@ -62,6 +62,8 @@ h2{font-size:clamp(2rem,3.4vw,3.4rem);max-width:calc(100% - var(--cam-w) - 24px)
 .aside p.muted{color:var(--muted)}
 .bignum{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(4rem,9vw,8rem);line-height:.9;color:var(--red);letter-spacing:-.04em}
 .credit{margin-top:auto;padding-top:14px;font-size:12.5px;line-height:1.5;color:var(--faint);max-width:92rem}
+.takeaway{margin-top:auto;padding-top:12px;font-size:15px;line-height:1.45;color:var(--text);max-width:92rem}
+.slide .takeaway + .credit{margin-top:6px;padding-top:0}
 .credit + .credit{margin-top:4px;padding-top:0}
 .credit.data-credit{color:var(--muted)}
 .credit.data-credit::before{content:"Chart data · ";font-weight:700;color:var(--teal)}

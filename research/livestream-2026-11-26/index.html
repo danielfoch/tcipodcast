@@ -208,6 +208,25 @@
       <p class="credit">Sources: Walmart Q3 FY27 earnings release and earnings-call transcript, Nov 19, 2026. The post said “roughly $2B”; the official wording is “over $2 billion,” and it is diesel and transportation, not just fuel. The release does not tie that $2 billion to Canadian diesel or Canadian consumers.</p>
     </section>
 
+    <section class="slide" data-slide>
+
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Front-month futures · Oct 30 to Nov 20</span>
+      <h2 style="margin-bottom:16px">Commodities just had a brutal November.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="commodity-mtd" aria-label="Horizontal bar chart of front-month futures percent change from the Oct 30 close to the Nov 20 close. RBOB gasoline −24.4%, Brent −21.3%, WTI −19.3%, heating oil −18.1%, silver −16.4%, copper −15.2%, aluminum −13.6%, sugar −12.0%, gold −9.8%, natural gas +17.7%."></canvas></div></div>
+      </div>
+      <p class="takeaway">US gas at $3.66 (AAA, Nov 21), Canada pump 143.4 c/L (CAA, Nov 21) vs 171.2 a month earlier; Canada’s October CPI still had gasoline +30.9% y/y, so this unwind hasn’t hit CPI yet.</p>
+      <p class="credit">Kobeissi Letter, <a href="https://x.com/KobeissiLetter/status/2124043635972845896" target="_blank" rel="noopener">https://x.com/KobeissiLetter/status/2124043635972845896</a>; verified Oct 30 to Nov 20 closes, Yahoo Finance; AAA; CAA; Statistics Canada.</p>
+      <p class="credit data-credit">Bars are those verified front-month percent changes. Declines are red; natural gas, the only gain, is teal.</p>
+    </section>
+
     
     <section class="slide" data-slide>
       
@@ -634,7 +653,45 @@
     };
   });
 
-  /* Slide 8 · every 9-day bill auction, Treasury Fiscal Data + TreasuryDirect */
+  /* Slide 8 · commodity month-to-date, verified front-month closes */
+  Deck.chart("commodity-mtd", () => {
+    const labels = ["RBOB gasoline", "Brent", "WTI", "Heating oil", "Silver", "Copper", "Aluminum", "Sugar", "Gold", "Natural gas"];
+    const values = [-24.4, -21.3, -19.3, -18.1, -16.4, -15.2, -13.6, -12.0, -9.8, 17.7];
+    const pct = (v) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(1) + "%";
+    return {
+      type: "bar",
+      data: { labels, datasets: [{ data: values, borderRadius: 6, borderSkipped: false, barPercentage: .72, categoryPercentage: .8,
+        backgroundColor: values.map(v => v > 0 ? T.teal : T.red) }] },
+      options: {
+        indexAxis: "y", responsive: true, maintainAspectRatio: false, layout: { padding: { right: 16, left: 8, top: 4 } },
+        animation: Deck.reduce ? false : { duration: 1000, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 120 : 0 },
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          label: (c) => labels[c.dataIndex] + " " + pct(values[c.dataIndex]) + ", Oct 30 close to Nov 20 close" } } },
+        scales: {
+          x: { min: -36, max: 30, ticks: { stepSize: 10, includeBounds: false, font: { size: 15 }, callback: (v) => v === 0 ? "0" : (v > 0 ? "+" : "−") + Math.abs(v) + "%" }, grid: { color: T.grid },
+            title: { display: true, text: "Front-month futures, Oct 30 close to Nov 20 close", color: T.muted, font: { size: 13 } } },
+          y: { grid: { display: false }, ticks: { autoSkip: false, color: T.text, font: { size: 16, weight: 700 } } }
+        }
+      },
+      plugins: [{ id: "cmdLabels", afterDatasetsDraw(chart){
+        const { ctx, chartArea: { top, bottom } } = chart;
+        const x0 = chart.scales.x.getPixelForValue(0);
+        ctx.save(); ctx.strokeStyle = T.text; ctx.globalAlpha = .55; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x0, top); ctx.lineTo(x0, bottom); ctx.stroke(); ctx.restore();
+        chart.getDatasetMeta(0).data.forEach((b, i) => {
+          if (!ok(b)) return;
+          const v = values[i];
+          const shown = chart.scales.x.getValueForPixel(b.x);
+          const anim = v < 0 ? Math.min(0, Math.max(v, shown)) : Math.max(0, Math.min(v, shown));
+          if (Math.abs(anim) < 0.05) return;
+          const positive = v > 0;
+          tag(ctx, pct(anim), positive ? b.x + 10 : b.x - 10, b.y, { align: positive ? "left" : "right", base: "middle", size: 16, color: positive ? T.teal : T.text });
+        });
+      } }]
+    };
+  });
+
+  /* Slide 9 · every 9-day bill auction, Treasury Fiscal Data + TreasuryDirect */
   Deck.chart("nine-day-bills", () => {
     const A = D.nineDayBills.auctions;
     const labels = A.map(a => new Date(a[0] + "T12:00:00").toLocaleDateString("en-CA", { month: "short", year: "numeric" }));
@@ -665,7 +722,7 @@
     };
   });
 
-  /* Slide 9 · US bank drawdowns (verified mid-session figures, unchanged) */
+  /* Slide 10 · US bank drawdowns (verified mid-session figures, unchanged) */
   Deck.chart("bank-drawdowns", () => {
     const labels = ["BAC", "WFC", "GS", "MS", "COF", "C", "KBW"];
     const values = [27.2, 18.8, 31.2, 28.3, 30.8, 24.7, 18.2];
@@ -698,7 +755,7 @@
     };
   });
 
-  /* Slide 10 · FT age transfers, values read off the published chart */
+  /* Slide 11 · FT age transfers, values read off the published chart */
   function ageTransferChart(id, panelKey, ymin, ymax, tickValues){
     Deck.chart(id, () => {
       const P = D.ageTransfers.panels[panelKey];
@@ -740,7 +797,7 @@
   ageTransferChart("transfers-uk-1979", "uk1979", -34, 16, [-30, -20, -10, 0, 10]);
   ageTransferChart("transfers-uk-2024", "uk2024", -34, 16, [-30, -20, -10, 0, 10]);
 
-  /* Slide 11 · FT's stated 1-in-4 share only */
+  /* Slide 12 · FT's stated 1-in-4 share only */
   Deck.chart("pensions-share", () => ({
     type: "doughnut",
     data: { labels: ["Pensions", "All other public goods and services"],
@@ -854,7 +911,7 @@
     };
   });
 
-  /* Slide 12 · RBC Q2 2026 levels vs long-term average (RBC summary tables) */
+  /* Slide 13 · RBC Q2 2026 levels vs long-term average (RBC summary tables) */
   Deck.chart("rbc-levels", () => {
     const labels = [["Canada", "detached"], ["Canada", "aggregate"], ["Canada", "condo"], ["Toronto", "detached"], ["Toronto", "aggregate"], ["Toronto", "condo"]];
     const now = [58.9, 52.8, 34.7, 80.7, 64.1, 35.3], avg = [44.7, 42.0, 33.3, 60.4, 51.6, 32.6];

@@ -1,6 +1,6 @@
 /* TCI livestream deck runtime: navigation, dark Chart.js defaults, and per-slide animations.
    Register a chart with Deck.chart("canvas-id", () => configObject). It is rebuilt every time its
-   slide comes on screen so the draw-in animation replays live. Use data-count on a number to count it up.
+   slide comes on screen so the draw-in animation replays live. Use data-count on a number to count it up (add data-sep for thousands separators).
    Shared chart across consecutive slides: put <div class="chart-frame" data-shared="id"> with the canvas in the
    first slide's <div class="chart-slot" data-chart-slot="id" data-state="a">, and an empty slot with the same id and
    another data-state on the next slide. Register with Deck.chart("id", build(state), { update(chart, state) }).
@@ -58,12 +58,13 @@
     slide.querySelectorAll("[data-count]").forEach((el) => {
       const target = parseFloat(el.dataset.count), dec = parseInt(el.dataset.decimals || "0", 10);
       const pre = el.dataset.prefix || "", suf = el.dataset.suffix || "";
-      const final = pre + target.toFixed(dec) + suf;
+      const num = (x) => el.hasAttribute("data-sep") ? x.toLocaleString("en-CA", { minimumFractionDigits: dec, maximumFractionDigits: dec }) : x.toFixed(dec);
+      const final = pre + num(target) + suf;
       if (reduce) { el.textContent = final; return; }
       const dur = parseInt(el.dataset.duration || "1400", 10), t0 = performance.now();
       const step = (t) => {
         const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-        el.textContent = p < 1 ? pre + (target * e).toFixed(dec) + suf : final;
+        el.textContent = p < 1 ? pre + num(target * e) + suf : final;
         if (p < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);

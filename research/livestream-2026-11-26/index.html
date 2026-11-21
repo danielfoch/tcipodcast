@@ -264,11 +264,36 @@
       <span class="kicker">The long view</span>
       <h2 style="margin-bottom:16px">Young-to-old transfers got a lot larger.</h2>
       <div class="chart-stage">
-        <div class="chart-frame image-card wipe"><span class="orig-tag">Original chart · Financial Times · no published data or value labels</span>
-          <img src="./pensions-ate-the-state-chart.jpg" alt="FT chart: Economic transfers from young to old have become far larger. Taxes paid versus benefits and services received per person, by age, inflation-adjusted, for the US and UK in 1979 and 2024.">
+        <div class="chart-frame transfer-card">
+          <div class="transfer-legend" aria-hidden="true">
+            <span><i style="background:#2f6eae"></i>Income tax</span>
+            <span><i style="background:#7eb6d4"></i>Social contributions</span>
+            <span><i style="background:#a52848"></i>Public pensions</span>
+            <span><i style="background:#c45a48"></i>Other benefits</span>
+            <span><i style="background:#e39a86"></i>Health care</span>
+            <span><i class="line"></i>Net</span>
+          </div>
+          <div class="transfer-grid">
+            <div class="transfer-panel">
+              <h3>US 1979</h3>
+              <div class="chart-wrap"><canvas id="transfers-us-1979" aria-label="US 1979 stacked chart of taxes paid and benefits received per person by age, inflation-adjusted, in thousands of dollars. Approximate values read from the FT chart."></canvas></div>
+            </div>
+            <div class="transfer-panel">
+              <h3>US 2024</h3>
+              <div class="chart-wrap"><canvas id="transfers-us-2024" aria-label="US 2024 stacked chart of taxes paid and benefits received per person by age. The net for people 85 and older is about −43.5 thousand dollars, far below 1979."></canvas></div>
+            </div>
+            <div class="transfer-panel">
+              <h3>UK 1979</h3>
+              <div class="chart-wrap"><canvas id="transfers-uk-1979" aria-label="UK 1979 stacked chart of taxes paid and benefits received per person by age, inflation-adjusted, in thousands of pounds."></canvas></div>
+            </div>
+            <div class="transfer-panel">
+              <h3>UK 2024</h3>
+              <div class="chart-wrap"><canvas id="transfers-uk-2024" aria-label="UK 2024 stacked chart of taxes paid and benefits received per person by age. The net for people 75 to 84 is about −26.5 thousand pounds. The published chart has no separate 85-and-older bar for the UK."></canvas></div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="credit">Source: John Burn-Murdoch, Financial Times, “How pensions ate the state,” Nov 20, 2026. Chart title on the original: “Economic transfers from young to old have become far larger.” Taxes paid vs benefits and services received per person, by age, inflation-adjusted ($ or £, 000s), US and UK, 1979 vs 2024. Do not treat visual estimates as exact figures. The accessible chart is US and UK only.</p>
+      <p class="credit">Recreation of John Burn-Murdoch, Financial Times, “How pensions ate the state,” Nov 20, 2026. Taxes paid versus benefits and services received per person, by age, inflation-adjusted, in $ or £ thousands. Values were read off the published chart and rounded to the nearest 0.5; they are approximate, not the FT’s source data. The US panels run through 85+. The UK panels in the source image stop at 75–84. The original image is kept in the repo and is not shown.</p>
     </section>
 
 
@@ -672,6 +697,48 @@
       } }]
     };
   });
+
+  /* Slide 10 · FT age transfers, values read off the published chart */
+  function ageTransferChart(id, panelKey, ymin, ymax, tickValues){
+    Deck.chart(id, () => {
+      const P = D.ageTransfers.panels[panelKey];
+      const labels = P.ages;
+      const net = P.incomeTax.map((v, i) => Math.round((v + P.social[i] + P.pensions[i] + P.other[i] + P.health[i]) * 10) / 10);
+      const bar = (label, data, color) => ({
+        type: "bar", label, data, backgroundColor: color, stack: "s",
+        borderWidth: 0, barPercentage: .82, categoryPercentage: .82, order: 2
+      });
+      return {
+        data: { labels, datasets: [
+          bar("Income tax", P.incomeTax, "#2f6eae"),
+          bar("Social contributions", P.social, "#7eb6d4"),
+          bar("Public pensions", P.pensions, "#a52848"),
+          bar("Other benefits", P.other, "#c45a48"),
+          bar("Health care", P.health, "#e39a86"),
+          { type: "line", label: "Net", data: net, borderColor: "#fdf7ee", backgroundColor: "#fdf7ee",
+            borderWidth: 2.5, pointRadius: 3.5, pointHoverRadius: 5, tension: .25, order: 0 }
+        ] },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          animation: Deck.reduce ? false : { duration: 650, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 110 : 0 },
+          interaction: { mode: "index", intersect: false },
+          plugins: { legend: { display: false }, tooltip: { callbacks: {
+            label: (c) => c.dataset.label + ": " + (c.raw > 0 ? "+" : "") + c.raw
+          } } },
+          scales: {
+            x: { stacked: true, grid: { display: false }, ticks: { color: T.text, font: { size: 10, weight: 600 }, maxRotation: 0, autoSkip: false } },
+            y: { stacked: true, min: ymin, max: ymax, grid: { color: T.grid },
+              afterBuildTicks: (scale) => { scale.ticks = tickValues.map((v) => ({ value: v })); },
+              ticks: { font: { size: 11 }, callback: (v) => (v > 0 ? "+" : "") + v } }
+          }
+        }
+      };
+    });
+  }
+  ageTransferChart("transfers-us-1979", "us1979", -50, 28, [-40, -20, 0, 20]);
+  ageTransferChart("transfers-us-2024", "us2024", -50, 28, [-40, -20, 0, 20]);
+  ageTransferChart("transfers-uk-1979", "uk1979", -34, 16, [-30, -20, -10, 0, 10]);
+  ageTransferChart("transfers-uk-2024", "uk2024", -34, 16, [-30, -20, -10, 0, 10]);
 
   /* Slide 11 · FT's stated 1-in-4 share only */
   Deck.chart("pensions-share", () => ({

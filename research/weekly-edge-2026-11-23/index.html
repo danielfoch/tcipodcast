@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <base href="./">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Weekly Edge notes, Nov 23, 2026 | TCI Podcast Network</title>
+  <link rel="icon" href="./logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./deck.css">
+  <style>
+    /* ---- Weekly Edge deck additions ---- */
+    .six{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1;min-height:0;align-content:center}
+    .six .frame-card{padding:18px 20px;gap:6px}
+    .six .frame-card h3{font-size:1.3rem}
+    .six .frame-card p{font-size:.95rem;line-height:1.4}
+    .aside .bignum.sm{font-size:clamp(3rem,6vw,5.4rem)}
+    .aside .bignum.teal{color:var(--teal)}
+    .facts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .facts li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:8px;border-bottom:1px solid var(--card-line);font-size:1rem;color:var(--muted)}
+    .facts b{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.7rem;color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}
+    .facts b.hot{color:var(--red)}
+    .trend{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+    .trend th,.trend td{padding:clamp(8px,1.5vh,16px) 10px;text-align:right;border-bottom:1px solid var(--card-line);font-size:clamp(.95rem,1.35vw,1.3rem)}
+    .trend thead th{font:700 11px/1.3 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .trend thead tr:first-child th{color:var(--teal);text-align:center;border-bottom:0;padding-bottom:0}
+    .trend th:first-child,.trend td:first-child{text-align:left;font-weight:700;color:var(--text)}
+    .trend td{color:var(--text)}
+    .trend td.neg{color:var(--red)}
+    .trend td.pos{color:var(--teal)}
+    .trend td.flag{background:rgba(255,90,105,.14);box-shadow:inset 0 0 0 1px rgba(255,90,105,.55);border-radius:6px;font-weight:700}
+    .trend .gap{border-left:1px solid var(--card-line)}
+    .chart-frame.table-card{align-items:center;padding:14px 22px}
+    .chart-frame.image-card img{background:#fff;padding:6px}
+    .chart-stage.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .quad{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+    .quad .transfer-panel h3 span{color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:none;margin-left:8px}
+    .quad .transfer-panel h3 span.neg{color:var(--red)}
+    .quad .transfer-panel h3 span.pos{color:var(--teal)}
+    .stat .figure small{font-size:.42em;color:var(--muted);letter-spacing:0;margin:0 .18em}
+    .terms{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-content:center}
+    .terms .frame-card p{font-size:.95rem}
+    @media(max-width:900px){.chart-stage.pair,.six,.terms{grid-template-columns:1fr}.slide{overflow-y:auto}}
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <div class="cam-zone" aria-hidden="true"></div>
+
+    <!-- 1 -->
+    <section class="slide title-slide theme-ink active" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Week of Nov 23, 2026 · Ben Rabidoux, Edge Realty Analytics</span>
+      <h1>Mortgage growth is at a 25-year low. Ontario is where it hurts.</h1>
+      <p class="lede">My talking points from Ben's Weekly Edge. Charts are Ben's, used with his permission, or rebuilt from CREA and Statistics Canada data. Arrow keys or swipe to move.</p>
+      <p class="hint">Press → to start</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">The week in six lines</span>
+      <h2 style="margin-bottom:16px">Credit is slow, sales are slow, and the stress is in Ontario.</h2>
+      <div class="six">
+        <div class="frame-card reveal"><span class="num">01 · Mortgages</span><h3>3.6% growth</h3><p>Slowest since 2001. The renewal wave has peaked, and payments at renewal start falling around June 2027.</p></div>
+        <div class="frame-card reveal"><span class="num">02 · OSFI</span><h3>Easier capital rules</h3><p>Risk weights on low-LTV mortgages get cut in half for smaller banks. I think the stress test is next.</p></div>
+        <div class="frame-card reveal"><span class="num">03 · Resale</span><h3>Sales down 10.6%</h3><p>Still near 25-year lows. Listings are shrinking in Ontario and BC. Quebec inventory is up 22.2%.</p></div>
+        <div class="frame-card reveal"><span class="num">04 · Insolvency</span><h3>Ontario debt up 38%</h3><p>Filings are up a little. The dollars attached to them are up a lot.</p></div>
+        <div class="frame-card reveal"><span class="num">05 · Construction</span><h3>Two markets</h3><p>Single-family and condo starts are falling. Rental is booming, with close to 270,000 units in the pipeline.</p></div>
+        <div class="frame-card reveal"><span class="num">06 · Odds and ends</span><h3>3.1% inflation</h3><p>Core is 1.9%. Retail sales look set to drop 1.5% in October. Ontario tax arrears are the highest since 2001.</p></div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, week of Nov 23, 2026, Ben Rabidoux, Edge Realty Analytics. Figures are Ben's unless a slide says otherwise.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Mortgages · September</span>
+      <h2 style="margin-bottom:16px">Mortgage debt is growing at the slowest pace since 2001.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="mortgage-growth" aria-label="Year-over-year growth in Canadian household residential mortgage debt, 2000 to September 2026. Growth topped 14% in 2007, reached about 11% in 2021 and was 3.6% in September 2026, the lowest since 2001."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">Sept 2026 · y/y</span>
+          <div class="bignum" data-count="3.6" data-decimals="1" data-suffix="%">3.6%</div>
+          <p>Home sales are near 25-year lows, so almost nobody is taking on new mortgage debt.</p>
+          <p class="muted">Ben's read: this makes it easier for OSFI to loosen the B-20 stress test. I agree.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics).</p>
+      <p class="credit data-credit">Rebuilt from Statistics Canada table 36-10-0639-01, residential mortgages, seasonally adjusted (v1231415621), to September 2026. The last time growth was lower was May 2001 (3.4%).</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Mortgages · the renewal wave</span>
+      <h2 style="margin-bottom:16px">Originations have rolled over. The renewal wave has peaked.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="originations" aria-label="Mortgage originations in Canada, 12-month rolling total in billions of dollars, 2014 to August 2026. The total peaked near 650 billion dollars in mid-2026."></canvas></div></div>
+        <div class="aside">
+          <p>Originations count new loans, renewals and refinancings. They fell year over year in both August and September, the first back-to-back drop since 2024.</p>
+          <p class="muted">Big volumes with 3.6% balance growth means this was churn. People renewed the mortgages they took out in 2020 to 2022. They didn't borrow more.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), from Bank of Canada data.</p>
+      <p class="credit data-credit">Rebuilt from Statistics Canada / Bank of Canada funds advanced, 12-month rolling sum, to August 2026. Ben's chart runs one month later, to September.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Mortgages · payment shock</span>
+      <h2 style="margin-bottom:16px">Renewals still cost more. That flips around June 2027.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p04-1.png" width="933" height="709" alt="Edge Realty Analytics chart: change in monthly mortgage payment at renewal per $100,000 originally borrowed, 1990 to 2027, positive since 2022 with the projected path turning negative in 2027.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p04-2.png" width="918" height="709" alt="Edge Realty Analytics chart: expected Bank of Canada policy rate path from the CORRA forward curve as of Nov 19, rising from 2.50% to 3.25% by late 2027.">
+        </div>
+      </div>
+      <p class="takeaway">Renewing today costs about $73 more a month for every $100,000 originally borrowed. Ben has that gap going negative around June 2027, even with two more Bank of Canada hikes priced in before next summer.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca). Orange bars are Ben's projection, built on the 1-month CORRA forward curve. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Mortgages · product mix</span>
+      <h2 style="margin-bottom:16px">Borrowers keep picking variable.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p04-3.png" width="918" height="705" alt="Edge Realty Analytics chart: share of mortgage originations by type, 2021 to 2026: variable, fixed under 3 years, fixed 3 to 4 years, fixed 5 years or more.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p04-4.png" width="932" height="706" alt="Edge Realty Analytics chart: variable-rate share of total outstanding mortgages, 2017 to 2026, at a record near 36%.">
+        </div>
+      </div>
+      <p class="takeaway">43% of September originations were variable. Only 9% were 5-year fixed. Floating-rate debt is now a record 36% of all mortgages outstanding.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from Bank of Canada data. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Mortgages · rates</span>
+      <h2 style="margin-bottom:16px">A 5-year fixed still costs 80+ bps more than variable.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p05-1.png" width="931" height="699" alt="Edge Realty Analytics chart: 5-year deep-discount fixed and variable mortgage rates, 2015 to 2026.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p05-2.png" width="930" height="697" alt="Edge Realty Analytics chart: spread between 5-year fixed and variable mortgage rates in basis points, 2012 to 2026, now above 80.">
+        </div>
+      </div>
+      <p class="takeaway">That's after the last Bank of Canada hike. While fixed carries that premium, I expect borrowers to keep floating.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from MortgageLogic.news. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Regulation · OSFI draft capital rules</span>
+      <h2 style="margin-bottom:16px">OSFI wants small lenders to compete with the Big Six.</h2>
+      <div class="stat-row">
+        <div class="stat reveal">
+          <span class="kicker">Mortgages under 50% LTV</span>
+          <div class="figure">20%<small>to</small>10%</div>
+          <p class="label">Proposed risk weight for small and mid-sized banks and federal credit unions. Borrower needs a credit score above 720.</p>
+        </div>
+        <div class="stat reveal">
+          <span class="kicker">Mortgages at 50% to 60% LTV</span>
+          <div class="figure">25%<small>to</small>12.5%</div>
+          <p class="label">Half the capital for the same loan. That frees up room to lend and to price against the Big Six, who hold over 90% of banking assets.</p>
+        </div>
+      </div>
+      <p class="takeaway">It wouldn't start until late 2027 or early 2028. What I care about is the direction. OSFI spent ten years tightening mortgage credit and is now loosening it. Ben asks if B-20 is next. I'd bet yes.</p>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics); OSFI, <a href="https://www.osfi-bsif.gc.ca/en/guidance/guidance-library/draft-capital-adequacy-requirements-guideline-2028-letter">draft Capital Adequacy Requirements Guideline (2028) letter</a>. Read OSFI's letter for the exact conditions before quoting them on air.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Resale · October</span>
+      <h2 style="margin-bottom:16px">October housing: up a hair on the month, down on the year.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame table-card">
+          <table class="trend" aria-label="October 2026 housing trends by province: sales, new listings, active inventory and MLS HPI, year over year and month over month seasonally adjusted.">
+            <thead>
+              <tr><th></th><th colspan="2" class="gap">Sales</th><th colspan="2" class="gap">New listings</th><th colspan="2" class="gap">Active listings</th><th colspan="2" class="gap">MLS HPI</th></tr>
+              <tr><th></th><th class="gap">y/y</th><th>m/m sa</th><th class="gap">y/y</th><th>m/m sa</th><th class="gap">y/y</th><th>m/m sa</th><th class="gap">y/y</th><th>m/m sa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Canada</td><td class="gap neg">−10.6%</td><td class="pos">+0.3%</td><td class="gap neg">−5.4%</td><td class="pos">+0.8%</td><td class="gap pos">+2.4%</td><td class="pos">+0.5%</td><td class="gap neg">−3.1%</td><td class="pos">+0.1%</td></tr>
+              <tr><td>BC</td><td class="gap neg">−11.0%</td><td class="pos">+0.1%</td><td class="gap neg">−12.5%</td><td class="pos">+0.4%</td><td class="gap neg">−3.8%</td><td class="pos">+2.0%</td><td class="gap neg">−4.4%</td><td class="neg">−0.2%</td></tr>
+              <tr><td>Alberta</td><td class="gap neg">−10.5%</td><td class="neg">−0.6%</td><td class="gap neg">−4.8%</td><td class="neg">−2.3%</td><td class="gap pos">+4.3%</td><td class="pos">+0.9%</td><td class="gap neg">−0.6%</td><td class="neg">−0.1%</td></tr>
+              <tr><td>Ontario</td><td class="gap neg">−8.7%</td><td class="pos flag">+1.7%</td><td class="gap neg">−8.8%</td><td class="pos">+3.1%</td><td class="gap neg">−4.8%</td><td class="neg">−0.6%</td><td class="gap neg">−3.8%</td><td class="neg">−0.2%</td></tr>
+              <tr><td>Quebec</td><td class="gap neg">−12.6%</td><td class="neg">−0.8%</td><td class="gap pos flag">+6.2%</td><td class="neg">−2.4%</td><td class="gap pos flag">+22.2%</td><td class="pos">+1.5%</td><td class="gap pos">+2.2%</td><td class="pos flag">+1.4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="takeaway">Ontario carried the monthly sales gain by itself. Quebec is the outlier everywhere else: more listings, more inventory, and a price jump that doesn't fit.</p>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), from CREA. I checked the sales, listings and inventory columns against CREA's October release. They match within 0.1 point, except BC new listings, where my pull shows −11.9%.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Resale · year to date</span>
+      <h2 style="margin-bottom:16px">2026 is the slowest year for home sales on this chart.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="cum-sales" aria-label="Cumulative Canadian home sales by month for each year from 2005 to 2026. 2021 is the highest line. 2026 is the lowest through October at about 385,000 sales."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">Jan to Oct 2026</span>
+          <div class="bignum sm" data-count="384690" data-sep>384,690</div>
+          <p>Sales through October. That's below every year back to 2005, including 2008 and 2023.</p>
+          <p class="muted">Same point last year: 409,827.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), which has sales trending at 25-year lows.</p>
+      <p class="credit data-credit">Rebuilt from CREA residential unit sales, not seasonally adjusted, national total summed from boards, January 2005 to October 2026.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Resale · active listings, seasonally adjusted</span>
+      <h2 style="margin-bottom:16px">Inventory is shrinking in BC and Ontario. Quebec is going the other way.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame transfer-card">
+          <div class="transfer-grid quad">
+            <div class="transfer-panel"><h3>BC <span class="neg">−3.8% y/y</span></h3><div class="chart-wrap"><canvas id="al-bc" aria-label="Active listings in BC, seasonally adjusted, 2010 to October 2026."></canvas></div></div>
+            <div class="transfer-panel"><h3>Alberta <span class="pos">+4.3% y/y</span></h3><div class="chart-wrap"><canvas id="al-ab" aria-label="Active listings in Alberta, seasonally adjusted, 2010 to October 2026."></canvas></div></div>
+            <div class="transfer-panel"><h3>Ontario <span class="neg">−4.8% y/y</span></h3><div class="chart-wrap"><canvas id="al-on" aria-label="Active listings in Ontario, seasonally adjusted, 2010 to October 2026."></canvas></div></div>
+            <div class="transfer-panel"><h3>Quebec <span class="pos">+22.2% y/y</span></h3><div class="chart-wrap"><canvas id="al-qc" aria-label="Active listings in Quebec, seasonally adjusted, 2010 to October 2026."></canvas></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="takeaway">Ben ties the BC and Ontario decline to new completions collapsing. Fewer finished condos means fewer of them hitting the MLS.</p>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics).</p>
+      <p class="credit data-credit">Rebuilt from CREA active listings, seasonally adjusted, January 2010 to October 2026. Year-over-year figures use actual (unadjusted) listings.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Resale · keep an eye on Quebec</span>
+      <h2 style="margin-bottom:16px">Quebec sellers are showing up.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="qc-listings" aria-label="Quebec new listings, 12-month rolling total, 2011 to October 2026. The total fell to about 117,000 in 2023 and has climbed to about 154,000."></canvas></div></div>
+        <div class="aside">
+          <ul class="facts">
+            <li><span>New listings, October y/y</span><b class="hot">+6.2%</b></li>
+            <li><span>Active listings y/y</span><b class="hot">+22.2%</b></li>
+            <li><span>Sales y/y</span><b>−12.6%</b></li>
+          </ul>
+          <p class="muted">New listings fell everywhere else. Quebec was the last hot market in the country, and this is what the turn looks like.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics).</p>
+      <p class="credit data-credit">Rebuilt from CREA new listings for Quebec, not seasonally adjusted, 12-month rolling sum to October 2026 (153,759).</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Resale · market balance</span>
+      <h2 style="margin-bottom:16px">Fewer than half of new listings are selling.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="snlr" aria-label="Canada sales-to-new-listings ratio, seasonally adjusted, 3-month average, 2015 to October 2026. It peaked above 80% in 2021 and sits near 49%."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">October · sales to new listings</span>
+          <div class="bignum sm" data-count="48.8" data-decimals="1" data-suffix="%">48.8%</div>
+          <p>The lowest since April, per Ben.</p>
+          <p class="muted">A ratio under 50% is a buyer's market in most of the country. Prices don't rise in that.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), from CREA and Haver Analytics.</p>
+      <p class="credit data-credit">Rebuilt from CREA sales-to-new-listings ratio, seasonally adjusted, 3-month average, national figure computed from boards, to October 2026. My single-month October reading is 48.75%.</p>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Prices · MLS HPI, September to October</span>
+      <h2 style="margin-bottom:16px">National prices rose 0.1%. All of it was Quebec.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="hpi-mom" aria-label="Month-over-month change in the seasonally adjusted MLS HPI, October 2026: Canada +0.1%, BC −0.2%, Alberta −0.1%, Ontario −0.2%, Quebec +1.4%."></canvas></div></div>
+        <div class="aside">
+          <p>Quebec's 1.4% is its biggest monthly gain since early 2022, in a month when its market balance got worse.</p>
+          <p>Ben calls it highly suspicious and expects a revision lower. So do I.</p>
+          <ul class="facts">
+            <li><span>National HPI vs peak, nominal</span><b class="hot">−21%</b></li>
+            <li><span>After inflation</span><b class="hot">−37%</b></li>
+          </ul>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), from CREA's MLS Home Price Index, seasonally adjusted. Bars use the five monthly figures in Ben's table. Hamilton, Kitchener, London and Toronto are down the most from peak on his chart. Montreal and Quebec City are at their peaks.</p>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Prices · MLS HPI vs peak</span>
+      <h2 style="margin-bottom:16px">Prices are 21% below peak. After inflation, 37%.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p09-2.png" width="930" height="704" alt="Edge Realty Analytics chart: Canada benchmark house price, seasonally adjusted, 2010 to 2026, peaking above $800,000 in 2022 and now near $650,000.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p09-3.png" width="930" height="705" alt="Edge Realty Analytics chart: change in prices from peak as of October 2026 by city, with Hamilton, Kitchener, London and Toronto down the most and Montreal and Quebec City at peak.">
+        </div>
+      </div>
+      <p class="takeaway">Hamilton, Kitchener, London and Toronto are down the most. Montreal and Quebec City are still at their peaks. That's why Quebec's listings matter so much right now.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from CREA. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 16 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Insolvency · September</span>
+      <h2 style="margin-bottom:16px">Consumer insolvencies are the highest since 2009.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="insolvencies" aria-label="Canadian consumer insolvency filings, 12-month rolling total, 2006 to August 2026. The total peaked near 152,000 in 2009-10, fell below 90,000 in 2021, and is back to about 146,000."></canvas></div></div>
+        <div class="aside">
+          <ul class="facts">
+            <li><span>Canada filings, y/y</span><b>+1.3%</b></li>
+            <li><span>Ontario filings, y/y</span><b class="hot">+6.3%</b></li>
+            <li><span>Debt in those filings, y/y</span><b class="hot">+18%</b></li>
+          </ul>
+          <p class="muted">Per capita, filings are only back to the long-run norm. Ben thinks this cycle has a long way to run.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics). The +18% covers liabilities in consumer filings in BC, Alberta, Ontario and Quebec.</p>
+      <p class="credit data-credit">Rebuilt from Office of the Superintendent of Bankruptcy monthly consumer filings, 12-month rolling sum, to August 2026 (146,135). Ben's figures are for September.</p>
+    </section>
+
+    <!-- 17 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Insolvency · the debt behind the filings</span>
+      <h2 style="margin-bottom:16px">Filings look normal. The debt doesn't.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p10-2.png" width="913" height="705" alt="Edge Realty Analytics chart: Canadian consumer insolvencies per 10,000 people, 12-month rolling, 2008 to 2026, back near the long-run norm of about 42.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p10-3.png" width="932" height="706" alt="Edge Realty Analytics chart: liabilities in consumer insolvency filings in BC, Alberta, Ontario and Quebec, 12-month rolling, 2015 to 2026, rising to nearly $20 billion.">
+        </div>
+      </div>
+      <p class="takeaway">Per 10,000 people, filings are only back to the long-run norm. The debt in those filings is up 18% in a year and well past the 2020 high.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from OSB data. Liabilities cover BC, Alberta, Ontario and Quebec. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 18 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Insolvency · all eyes on Ontario</span>
+      <h2 style="margin-bottom:16px">In Ontario, the debt behind the filings is 3x pre-COVID.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p11-3.png" width="932" height="695" alt="Edge Realty Analytics chart: liabilities in Ontario consumer insolvency filings by month in millions of dollars, 2015 to 2026, recently near $900 million to $1 billion.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p12-1.png" width="932" height="694" alt="Edge Realty Analytics chart: liabilities in Ontario insolvency filings, consumer plus business, 12-month rolling, 2015 to 2026, rising above $17 billion.">
+        </div>
+      </div>
+      <p class="takeaway">Debt in Ontario consumer filings rose 38% y/y in September. Business filings were up 11.7% and their liabilities 65%. One trustee, Baigel Corp, says median unsecured debt among its Toronto consumer-proposal clients went from $29,755 to $40,426 this year.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from OSB data; <a href="https://www.wboc.com/online_features/press_releases/baigel-corp-reports-35-9-rise-in-median-client-debt/article_2e94d621-3397-531e-95c3-3a8fe8b98676.html">Baigel Corp press release</a> (first nine months of 2026 vs 2025, its own clients only). Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 19 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Insolvency · business</span>
+      <h2 style="margin-bottom:16px">Business insolvencies are turning back up.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p11-1.png" width="918" height="703" alt="Edge Realty Analytics chart: business insolvencies in Canada, 12-month rolling, 2010 to 2026, down from the 2024 peak and levelling off near 4,700.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p11-2.png" width="931" height="704" alt="Edge Realty Analytics chart: liabilities in business insolvency filings in BC, Alberta, Ontario and Quebec, 12-month rolling, 2018 to 2026, near $14 billion.">
+        </div>
+      </div>
+      <p class="takeaway">Filings rose 2.5% y/y in September after falling from the 2024 peak. The liabilities in them jumped 60.2%.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from OSB data. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 20 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Construction · housing starts</span>
+      <h2 style="margin-bottom:16px">Builders have stopped building homes to sell.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="starts" aria-label="Canadian housing starts by intended market, 12-month rolling totals, 2015 to September 2026. Rental starts climb from about 25,000 to 120,000. Condo starts fall to about 38,000. Homeowner starts drift down to about 55,000."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">October starts · annualized</span>
+          <div class="bignum sm" data-count="244.6" data-decimals="1" data-suffix="K">244.6K</div>
+          <p>Down 2.0% on the month.</p>
+          <p class="muted">Rental is the only segment still growing. It now outpaces homeowner and condo starts combined.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics), from CMHC.</p>
+      <p class="credit data-credit">Rebuilt from CMHC starts by intended market via Statistics Canada, 12-month rolling sums, to September 2026. "Homeowner" is freehold built for sale, close to but not the same as Ben's single-family line, and his chart covers census metropolitan areas only.</p>
+    </section>
+
+    <!-- 21 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Construction · built to own</span>
+      <h2 style="margin-bottom:16px">Single-family starts are back to the mid-1990s.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p13-1.png" width="931" height="704" alt="Edge Realty Analytics chart: single-family housing starts, detached plus semi plus row, cumulative 12-month rolling, 1990 to 2026, at levels last seen in the mid-1990s.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p13-2.png" width="927" height="706" alt="Edge Realty Analytics chart: condo starts, cumulative 12-month rolling, 1990 to 2026, falling toward the financial-crisis low.">
+        </div>
+      </div>
+      <p class="takeaway">Condo starts are closing in on the financial-crisis low. Ben's point: with this little being built to own, it's hard to stay too bearish on house prices.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from CMHC. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 22 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Construction · the rental pipeline</span>
+      <h2 style="margin-bottom:16px">Rental is not replacing condos. It's adding to them.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p14-1.png" width="930" height="703" alt="Edge Realty Analytics chart: dwellings under construction in Canadian metro regions by type, 1990 to 2026, with rental above 200,000 and condo falling.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p14-2.png" width="913" height="705" alt="Edge Realty Analytics chart: primary plus secondary rental supply under construction, purpose-built rentals plus half of condos, 1990 to 2026, at a record near 270,000.">
+        </div>
+      </div>
+      <p class="takeaway">Count every purpose-built rental plus half the condos under construction and close to 270,000 rental units are on the way, a record. Budget 2026 hasn't kicked in yet, and it opens rental financing to private insurers and to 3- and 4-unit projects.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from CMHC. Half of condos is Ben's estimate of the share that ends up as long-term rentals. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 23 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Construction · unsold new homes</span>
+      <h2 style="margin-bottom:16px">Nearly 22,000 finished homes are sitting unsold. That's a record.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p14-3.png" width="930" height="696" alt="Edge Realty Analytics chart: completed and unsold developer inventory, all property types, Canadian census metropolitan areas, 1990 to October 2026. The line rises from about 6,000 in 2022 to a record near 22,000.">
+        </div>
+        <div class="aside">
+          <span class="kicker">October · completed and unsold</span>
+          <div class="bignum sm" data-count="22" data-prefix="~" data-suffix="K">~22K</div>
+          <p>Up from about 6,000 in 2022. It has passed the early-1990s peak.</p>
+          <p class="muted">It's rising in nearly every metro. Vancouver and Calgary are climbing fastest. No wonder developers aren't launching.</p>
+        </div>
+      </div>
+      <p class="credit">Source and chart: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from CMHC. The 2022 low and early-1990s peak are read from the chart. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 24 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Construction · unsold new homes by metro</span>
+      <h2 style="margin-bottom:16px">Vancouver and Calgary are piling up the fastest.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p14-4.png" width="930" height="704" alt="Edge Realty Analytics chart: completed and unsold developer inventory in Vancouver, 1990 to 2026, at a new high above 6,000 units.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p14-5.png" width="929" height="705" alt="Edge Realty Analytics chart: completed and unsold developer inventory in Calgary, 2000 to 2026, back near 2,300 units.">
+        </div>
+      </div>
+      <p class="takeaway">Vancouver has more unsold new homes than at any point on this chart, which goes back to 1990. Calgary is back at its 2018 to 2019 highs.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from CMHC. Comparisons to earlier peaks are read from the charts. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 25 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · property taxes</span>
+      <h2 style="margin-bottom:16px">Ontario homeowners are falling behind on property tax.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p15-1.png" width="933" height="694" alt="Edge Realty Analytics chart: municipal property taxes in arrears, 2019 to 2025, for Brampton, Kitchener and the average of the 10 largest municipalities, with Brampton highest.">
+        </div>
+        <div class="aside">
+          <ul class="facts">
+            <li><span>Ontario arrears rate, highest since</span><b class="hot">2001</b></li>
+            <li><span>Brampton, per Better Dwelling's headline</span><b>11.9%</b></li>
+          </ul>
+          <p>People skip the tax bill before they skip the mortgage.</p>
+          <p class="muted">I read this as an early warning for Ontario mortgage delinquencies.</p>
+        </div>
+      </div>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca); Better Dwelling, <a href="https://betterdwelling.com/ontario-property-tax-arrears-hit-24-year-high-brampton-leads-at-11-9/">"Ontario Property Tax Arrears Hit 24-Year High"</a>, from Government of Ontario data. Ben's Brampton bar for 2025 reads higher than 11.9%. Check which measure you're quoting. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 26 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · the consumer</span>
+      <h2 style="margin-bottom:16px">September retail sales were a gas-price story. October looks bad.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p16-2.png" width="930" height="700" alt="Edge Realty Analytics chart: monthly change in Canadian retail sales, January 2023 to October 2026, ending with a 1.5% advance-estimate decline for October.">
+        </div>
+        <div class="aside">
+          <ul class="facts">
+            <li><span>September retail sales, m/m</span><b>+0.8%</b></li>
+            <li><span>Gasoline sales</span><b>+6.9%</b></li>
+            <li><span>Core, ex autos and gas</span><b>+0.1%</b></li>
+            <li><span>October advance estimate</span><b class="hot">−1.5%</b></li>
+          </ul>
+          <p class="muted">Core was flat after prices. If October holds, it's the second-steepest monthly drop in four years.</p>
+        </div>
+      </div>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from Statistics Canada retail trade, September 2026, and its advance indicator for October. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 27 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · wages</span>
+      <h2 style="margin-bottom:16px">Real aggregate wages are shrinking.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p17-1.png" width="930" height="700" alt="Edge Realty Analytics chart: real aggregate wage growth year over year, actual hours worked times average wage, inflation adjusted, 2000 to 2026, recently turning negative.">
+        </div>
+        <div class="aside">
+          <p>This is hours worked times the average wage, after inflation. It tells you how much spending power is in the economy.</p>
+          <p class="muted">It has gone negative year over year. Ben expects consumer spending to follow. So do I.</p>
+        </div>
+      </div>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca). Ben removed March 2020 to July 2021 from the chart for scale. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 28 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · inflation, October</span>
+      <h2 style="margin-bottom:16px">Headline inflation is 3.1%. Core is 1.9%.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="cpi" aria-label="Canada CPI year-over-year and the average of CPI-median and CPI-trim, 2000 to October 2026. Headline is 3.1% and the core average is 1.9%."></canvas></div></div>
+        <div class="aside">
+          <ul class="facts">
+            <li><span>Headline CPI, y/y</span><b class="hot">3.1%</b></li>
+            <li><span>Core (median and trim average)</span><b>1.9%</b></li>
+            <li><span>Of the headline that is gasoline</span><b>1.2 pts</b></li>
+          </ul>
+          <p class="muted">Pump prices fell from about $1.70 a litre at the start of November to under $1.40. The gap between headline and core should close fast.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics); pump prices from GasBuddy via Edge.</p>
+      <p class="credit data-credit">Rebuilt from Statistics Canada CPI all-items (table 18-10-0004-01) and CPI-median and CPI-trim (table 18-10-0256-01), to October 2026. October: median 2.0%, trim 1.8%.</p>
+    </section>
+
+    <!-- 29 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · rent</span>
+      <h2 style="margin-bottom:16px">Rent inflation is under 2% for the first time since 2021.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="rent-cpi" aria-label="CPI rented accommodation, year-over-year change, 1990 to October 2026. It peaked near 8.7% in 2024 and has fallen to about 1.8%."></canvas></div></div>
+        <div class="aside">
+          <span class="kicker">CPI rented accommodation · Oct y/y</span>
+          <div class="bignum sm teal" data-count="1.8" data-decimals="1" data-suffix="%">1.8%</div>
+          <p>It was 2.7% in September and 8.6% at the peak in August 2024.</p>
+          <p class="muted">Slower rent growth is finally in the CPI. With 270,000 rental units still under construction, I don't see it turning back up soon.</p>
+        </div>
+      </div>
+      <p class="credit">Source: The Weekly Edge, Nov 23, 2026 (Edge Realty Analytics).</p>
+      <p class="credit data-credit">Rebuilt from Statistics Canada CPI, rented accommodation (table 18-10-0004-01), year-over-year, to October 2026 (1.75%).</p>
+    </section>
+
+    <!-- 30 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Odds and ends · the banks</span>
+      <h2 style="margin-bottom:16px">Deposits are leaving. Business loans are growing.</h2>
+      <div class="chart-stage pair">
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p17-3.png" width="930" height="701" alt="Edge Realty Analytics chart: chartered bank personal deposits, year-over-year change, 2010 to 2026, slipping slightly below zero.">
+        </div>
+        <div class="chart-frame image-card wipe"><span class="orig-tag">Chart: Edge Realty Analytics</span>
+          <img src="./edge/p19-2.png" width="930" height="704" alt="Edge Realty Analytics chart: chartered bank domestic non-mortgage loans to non-financial corporations, 3-month change, seasonally adjusted, 2018 to 2026, with the latest reading the strongest since late 2022.">
+        </div>
+      </div>
+      <p class="takeaway">Personal deposits fell 0.2% in September, the third drop in four months. That's the banks' cheapest funding, so it puts a little upward pressure on mortgage rates. Business lending had its best three months since late 2022.</p>
+      <p class="credit">Source and charts: The Weekly Edge, Nov 23, 2026, Edge Realty Analytics (edgeanalytics.ca), from chartered bank balance sheet data for September 2026. Charts used with Ben's permission.</p>
+    </section>
+
+    <!-- 31 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">My watch list</span>
+      <h2 style="margin-bottom:16px">Four things I'm watching from here.</h2>
+      <div class="frame-grid">
+        <div class="frame-card reveal"><span class="num">01</span><h3>Quebec's HPI revision</h3><p>A 1.4% monthly gain with inventory up 22% doesn't add up. If it gets revised down, national prices fell in October.</p></div>
+        <div class="frame-card reveal"><span class="num">02</span><h3>June 2027</h3><p>That's when Ben has renewal payments turning lower. It takes a real drag off household spending.</p></div>
+        <div class="frame-card reveal"><span class="num">03</span><h3>The B-20 stress test</h3><p>Mortgage growth at 3.6% and OSFI already easing capital rules. The case for keeping the test as is keeps getting weaker.</p></div>
+        <div class="frame-card reveal"><span class="num">04</span><h3>Ontario credit losses</h3><p>Insolvency debt up 38%, tax arrears at a 24-year high, 22,000 unsold new homes nationally. Lenders with Ontario books feel this first.</p></div>
+      </div>
+      <p class="credit">These are my reads on the data in The Weekly Edge, Nov 23, 2026. They are not Ben's forecasts unless a slide says so. Not investment advice.</p>
+    </section>
+
+    <!-- 32 -->
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/"><img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network"></a>
+        <span class="kicker">The Canadian Investor · Weekly Edge notes</span>
+      </div>
+      <span class="kicker">Credit where it's due</span>
+      <h2 style="margin-bottom:16px">The analysis is Ben Rabidoux's. Go subscribe.</h2>
+      <div class="terms">
+        <div class="frame-card reveal"><span class="num">The report</span><h3>The Weekly Edge, Nov 23, 2026</h3><p>Published by Edge Realty Analytics Ltd. for paid subscribers at <a href="https://www.edgeanalytics.ca">edgeanalytics.ca</a>. The report is restricted. Ben's charts appear here with his permission. Two third-party charts in the report (Better Dwelling, GasBuddy) are cited but not reproduced.</p></div>
+        <div class="frame-card reveal"><span class="num">The rebuilt charts</span><h3>Public data, my build</h3><p>CREA monthly statistics (October 2026). Statistics Canada tables 36-10-0639-01, 18-10-0004-01 and 18-10-0256-01. Bank of Canada lending data, OSB insolvency filings and CMHC starts via Statistics Canada. Some run a month behind Ben's charts, and each slide says so.</p></div>
+      </div>
+      <p class="credit">Nothing here is investment advice. Numbers are as published the week of Nov 23, 2026 and get revised.</p>
+    </section>
+  </div>
+
+  <div class="footerbar">
+    <div class="progress"><span></span></div>
+    <span class="counter"></span>
+    <div class="navbtns">
+      <button type="button" data-prev aria-label="Previous slide">‹</button>
+      <button type="button" data-next aria-label="Next slide">›</button>
+    </div>
+  </div>
+
+  <script src="./chart.umd.min.js"></script>
+  <script src="./deck-data.js?v=2"></script>
+  <script src="./deck.js"></script>
+  <script src="./charts.js?v=3"></script>
+</body>
+</html>

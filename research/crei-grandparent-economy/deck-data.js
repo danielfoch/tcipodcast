@@ -1,4 +1,5 @@
-/* Every figure here is copied from the episode run sheet (recorded Nov 25, 2026), which names a source for each.
+/* Except for the three sets at the bottom (quint, gain, nbc), every figure here is copied from the episode run sheet
+   (recorded Nov 25, 2026), which names a source for each.
    Nothing is estimated or interpolated. Figures the run sheet marks as "our math" or hypothetical are flagged below
    and tagged on the slide. Where the run sheet gives a number without a label or year, it is left out. */
 window.DD = {
@@ -129,5 +130,30 @@ window.DD = {
     // Embark Grandparent Economy Report 2026, p.15.
     labels: ["Give while alive", "Leave an inheritance"],
     v: [63, 18]
+  },
+
+  /* Added after the first version of the deck. These three are not from the run sheet. */
+  quint: {
+    // TD Economics, "Narrowing of the Wealth Gap", Mar 11, 2026, chart 1 (StatCan Table 11-10-0049-01).
+    // Share of wealth by wealth quintile, %. Only the values labelled on TD's chart.
+    // The lowest and second quintiles are not labelled there, so they are not drawn or computed.
+    labels: ["1999", "2005", "2012", "2016", "2019", "2023"],
+    highest: [68.6, 69.3, 67.5, 67.3, 67.2, 63.5],
+    fourth: [20.1, 20.2, 21.4, 21.2, 21.0, 22.1],
+    middle: [8.8, 8.4, 9.0, 9.1, 9.2, 10.6]
+  },
+  gain: {
+    // Same TD article, text. Growth in average net worth, 2019 to 2023, % (StatCan Survey of Financial Security).
+    labels: [["Bottom 40%", "by wealth"], ["Top 20%", "by wealth"], ["Households", "under 35"], ["Households", "35 and older"]],
+    v: [76, 10, 81, 11]
+  },
+  nbc: {
+    // NBC Economics and Strategy, "Canada: Perspective on housing affordability".
+    // Monthly mortgage payment on the median home price as % of median income, all dwelling types,
+    // 25-year amortization, 5-year term. APPROXIMATE: values read from the published chart, not from a data file.
+    // Peaks for Montreal and Calgary are not given, so they are null and only the latest bar is drawn.
+    labels: ["Vancouver", "Toronto", "Canada", "Montreal", "Calgary"],
+    peak: [111, 96, 66, null, null],
+    latest: [79, 69, 51, 45, 39]
   }
 };

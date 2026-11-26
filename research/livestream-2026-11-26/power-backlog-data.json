@@ -1,0 +1,249 @@
+{
+  "asOf": "2026-11-26",
+  "units": {
+    "gevPowerRpoUsdBn": "USD billions",
+    "siemensGasServicesBacklogEurBn": "EUR billions"
+  },
+  "indexBaseDate": "2022-12-31",
+  "methodology": [
+    "Quarter-end stocks of outstanding equipment and service commitments; neither quarterly order intake nor company-wide RPO.",
+    "Calendar quarter-end dates. Siemens fiscal Q4 ends September 30 and is calendar Q3.",
+    "Indexed chart: each native-currency value divided by its 2022-12-31 value, multiplied by 100. No FX conversion or USD/EUR equivalence is implied.",
+    "GE Vernova 2022\u20132024 uses historical reported Power figures. 2025\u20132026 uses the 2026 reporting structure and recast 2025 comparatives. The dotted connection at 2025 marks this basis change; this is not a constant-scope growth series.",
+    "GE Vernova sold a portion of Steam Power nuclear activities to EDF in Q2 2024, reducing Power RPO by approximately USD 3.9bn. This affects the 2024 dip.",
+    "In 2026, Steam Power was reassigned among Gas, Nuclear and Hydro, and part of Electrification Software moved into Gas Power. See GE Q3 2026 Form 10-Q, Note 1 and MD&A.",
+    "GE Vernova Power includes gas, nuclear and hydro; Siemens Gas Services includes equipment and servicing. Neither series measures exclusively gas turbines or AI demand. Contracted backlog is not delivered generating capacity.",
+    "No verified GE Power observations before 2022-12-31 or Siemens Gas Services observations before 2022-09-30 are plotted. Missing values remain null; no estimates.",
+    "All 16 GE observations were independently checked against the linked original reports. All 17 Siemens observations were freshly retrieved from Fiscal.ai; the September 2026 endpoint was also checked against the original Siemens earnings release. Earlier Siemens quarters were not each separately checked against original reports."
+  ],
+  "sources": {
+    "gev2024": {
+      "title": "GE Vernova 2024 Annual Report \u2014 Power RPO, printed p. 38 / PDF p. 48",
+      "url": "https://www.gevernova.com/sites/default/files/gevernova_2024_annual_report.pdf#page=48"
+    },
+    "gev2024q1": {
+      "title": "GE Vernova Q1 2024 earnings presentation \u2014 Power key performance metrics, p. 16",
+      "url": "https://www.gevernova.com/sites/default/files/2025-04/gev_webcast_presentation_04252024.pdf#page=16"
+    },
+    "gev2024q2": {
+      "title": "GE Vernova Q2 2024 Form 10-Q \u2014 Power RPO, p. 8",
+      "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681024000067/gev-20240630.htm"
+    },
+    "gev2024q3": {
+      "title": "GE Vernova Q3 2024 Form 10-Q \u2014 Power RPO, p. 8",
+      "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681024000083/gev-20240930.htm"
+    },
+    "gev2026q1": {
+      "title": "GE Vernova Q1 2026 Form 10-Q \u2014 Power RPO, p. 26 (2025 recast)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000064/gev-20260331.htm"
+    },
+    "gev2026q2": {
+      "title": "GE Vernova Q2 2026 Form 10-Q \u2014 Power RPO, p. 28 (2025 recast)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000148/gev2q2026form10-q.pdf#page=28"
+    },
+    "gev2026q3": {
+      "title": "GE Vernova Q3 2026 Form 10-Q \u2014 Power RPO, p. 29 (2025 recast)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm"
+    },
+    "fiscal": {
+      "title": "Fiscal.ai \u2014 XETRA_ENR, Gas Services \u2013 Order Backlog, metric 14917_KPIS_63112; retrieved 2026-11-26",
+      "url": "https://fiscal.ai/"
+    },
+    "siemens2026q4": {
+      "title": "Siemens Energy Q4 FY2026 earnings release \u2014 Gas Services, p. 3; quarter ended 2026-09-30",
+      "url": "https://assets.siemens-energy.com/dam/23e549e5-fb37-4db4-99d3-b4ff00539ccb/ER_Q4_26_EN_final-pdf_Original%20file.pdf#page=3"
+    }
+  },
+  "observations": [
+    {
+      "date": "2022-03-31",
+      "calendarQuarter": "2022 Q1",
+      "gevPowerRpoUsdBn": null,
+      "siemensGasServicesBacklogEurBn": null,
+      "gevSource": null,
+      "siemensSource": null,
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 2
+    },
+    {
+      "date": "2022-06-30",
+      "calendarQuarter": "2022 Q2",
+      "gevPowerRpoUsdBn": null,
+      "siemensGasServicesBacklogEurBn": null,
+      "gevSource": null,
+      "siemensSource": null,
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 3
+    },
+    {
+      "date": "2022-09-30",
+      "calendarQuarter": "2022 Q3",
+      "gevPowerRpoUsdBn": null,
+      "siemensGasServicesBacklogEurBn": 42.3,
+      "gevSource": null,
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 4
+    },
+    {
+      "date": "2022-12-31",
+      "calendarQuarter": "2022 Q4",
+      "gevPowerRpoUsdBn": 70.934,
+      "siemensGasServicesBacklogEurBn": 41.0,
+      "gevSource": "gev2024",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 1
+    },
+    {
+      "date": "2023-03-31",
+      "calendarQuarter": "2023 Q1",
+      "gevPowerRpoUsdBn": 71.19,
+      "siemensGasServicesBacklogEurBn": 42.1,
+      "gevSource": "gev2024q1",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 2
+    },
+    {
+      "date": "2023-06-30",
+      "calendarQuarter": "2023 Q2",
+      "gevPowerRpoUsdBn": 72.2,
+      "siemensGasServicesBacklogEurBn": 41.3,
+      "gevSource": "gev2024q2",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 3
+    },
+    {
+      "date": "2023-09-30",
+      "calendarQuarter": "2023 Q3",
+      "gevPowerRpoUsdBn": 71.781,
+      "siemensGasServicesBacklogEurBn": 41.0,
+      "gevSource": "gev2024q3",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 4
+    },
+    {
+      "date": "2023-12-31",
+      "calendarQuarter": "2023 Q4",
+      "gevPowerRpoUsdBn": 72.974,
+      "siemensGasServicesBacklogEurBn": 42.0,
+      "gevSource": "gev2024",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 1
+    },
+    {
+      "date": "2024-03-31",
+      "calendarQuarter": "2024 Q1",
+      "gevPowerRpoUsdBn": 72.783,
+      "siemensGasServicesBacklogEurBn": 43.0,
+      "gevSource": "gev2024q1",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 2
+    },
+    {
+      "date": "2024-06-30",
+      "calendarQuarter": "2024 Q2",
+      "gevPowerRpoUsdBn": 69.457,
+      "siemensGasServicesBacklogEurBn": 45.0,
+      "gevSource": "gev2024q2",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 3
+    },
+    {
+      "date": "2024-09-30",
+      "calendarQuarter": "2024 Q3",
+      "gevPowerRpoUsdBn": 71.303,
+      "siemensGasServicesBacklogEurBn": 45.0,
+      "gevSource": "gev2024q3",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 4
+    },
+    {
+      "date": "2024-12-31",
+      "calendarQuarter": "2024 Q4",
+      "gevPowerRpoUsdBn": 73.351,
+      "siemensGasServicesBacklogEurBn": 49.0,
+      "gevSource": "gev2024",
+      "siemensSource": "fiscal",
+      "gevBasis": "historical reported segment structure",
+      "siemensFiscalQuarter": 1
+    },
+    {
+      "date": "2025-03-31",
+      "calendarQuarter": "2025 Q1",
+      "gevPowerRpoUsdBn": 76.453,
+      "siemensGasServicesBacklogEurBn": 52.0,
+      "gevSource": "gev2026q1",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 2
+    },
+    {
+      "date": "2025-06-30",
+      "calendarQuarter": "2025 Q2",
+      "gevPowerRpoUsdBn": 79.221,
+      "siemensGasServicesBacklogEurBn": 53.0,
+      "gevSource": "gev2026q2",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 3
+    },
+    {
+      "date": "2025-09-30",
+      "calendarQuarter": "2025 Q3",
+      "gevPowerRpoUsdBn": 84.216,
+      "siemensGasServicesBacklogEurBn": 54.0,
+      "gevSource": "gev2026q3",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 4
+    },
+    {
+      "date": "2025-12-31",
+      "calendarQuarter": "2025 Q4",
+      "gevPowerRpoUsdBn": 94.548,
+      "siemensGasServicesBacklogEurBn": 60.0,
+      "gevSource": "gev2026q3",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 1
+    },
+    {
+      "date": "2026-03-31",
+      "calendarQuarter": "2026 Q1",
+      "gevPowerRpoUsdBn": 99.694,
+      "siemensGasServicesBacklogEurBn": 66.0,
+      "gevSource": "gev2026q1",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 2
+    },
+    {
+      "date": "2026-06-30",
+      "calendarQuarter": "2026 Q2",
+      "gevPowerRpoUsdBn": 111.649,
+      "siemensGasServicesBacklogEurBn": 73.0,
+      "gevSource": "gev2026q2",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 3
+    },
+    {
+      "date": "2026-09-30",
+      "calendarQuarter": "2026 Q3",
+      "gevPowerRpoUsdBn": 130.854,
+      "siemensGasServicesBacklogEurBn": 74.0,
+      "gevSource": "gev2026q3",
+      "siemensSource": "fiscal",
+      "gevBasis": "2026 segment structure, including recast 2025 comparatives",
+      "siemensFiscalQuarter": 4
+    }
+  ]
+}

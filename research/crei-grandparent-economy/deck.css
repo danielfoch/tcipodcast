@@ -1,0 +1,169 @@
+/* TCI deck, dark navy variant. Same shell as the stock-crash episode deck. */
+:root{
+  --bg:#08183a;--bg-mid:#0f2a5e;--bg-edge:#040d22;
+  --text:#ffffff;--muted:#b4c6e6;--faint:#8098c2;
+  --red:#4f9dff;--red-base:#2f7bf0;--teal:#8fc6ff;--teal-base:#3d6fb8;
+  --card:rgba(14,36,82,.78);--card-line:rgba(143,198,255,.20);--grid:rgba(180,198,230,.14);
+  --cam-w:min(22vw,422px);--cam-h:min(20vh,216px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;color:var(--text);font:18px/1.5 "DM Sans",sans-serif;overflow:hidden;
+  background:var(--bg-edge)}
+body{background:
+  radial-gradient(ellipse 75% 70% at 50% 46%,var(--bg-mid) 0%,var(--bg) 58%,var(--bg-edge) 100%)}
+/* faint grid + vignette, fixed behind every slide */
+body::before,body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
+body::before{
+  background-image:linear-gradient(rgba(159,182,198,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(159,182,198,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 50%,#000 30%,transparent 85%);
+          mask-image:radial-gradient(ellipse 70% 65% at 50% 50%,#000 30%,transparent 85%)}
+body::after{background:radial-gradient(ellipse 90% 85% at 50% 50%,transparent 55%,rgba(3,10,16,.55) 100%)}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+.deck{height:100%;width:100%;position:relative;z-index:1}
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:clamp(24px,3.6vh,44px) clamp(28px,4.6vw,88px) 76px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(14px);transition:opacity .45s ease,transform .45s ease,visibility 0s linear .45s;
+}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:opacity .45s ease,transform .45s ease}
+.muted{color:var(--muted)}
+/* top-left brand; the top-right corner stays clear for the host camera */
+.topbar{display:flex;align-items:center;gap:18px;margin-bottom:clamp(16px,3.2vh,34px);max-width:calc(100% - var(--cam-w) - 24px)}
+.brand-mark{display:flex;align-items:center;text-decoration:none;flex-shrink:0}
+.brand-mark img{height:52px;width:auto;display:block}
+.topbar .kicker{color:var(--muted);padding-left:18px;border-left:1px solid var(--card-line)}
+.kicker{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--teal);font-family:Manrope,sans-serif}
+h1,h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;letter-spacing:-.03em;line-height:1.06;margin:0;color:var(--text)}
+h2{font-size:clamp(2rem,3.4vw,3.4rem);max-width:calc(100% - var(--cam-w) - 24px);margin-top:6px}
+.one-liner h1{font-size:clamp(2.6rem,6.2vw,5.6rem);max-width:18ch}
+.one-liner,.title-slide{justify-content:center}
+.title-slide .topbar{position:absolute;top:clamp(24px,3.6vh,44px);left:clamp(28px,4.6vw,88px)}
+.title-slide h1{font-size:clamp(3rem,6.6vw,6.4rem);max-width:15ch;margin-top:14px}
+.title-slide h1::after{content:"";display:block;width:120px;height:4px;background:var(--red);margin-top:30px;border-radius:2px}
+.title-slide .lede,.slide .lede{margin-top:24px;font-size:clamp(1.05rem,1.8vw,1.4rem);max-width:40rem;color:var(--muted)}
+.chart-stage{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:24px}
+.chart-stage.has-aside{grid-template-columns:minmax(0,1.55fr) minmax(260px,.62fr)}
+.chart-frame{position:relative;background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:22px 24px;
+  display:flex;align-items:center;justify-content:center;min-height:0;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04);backdrop-filter:blur(2px)}
+.chart-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.chart-frame.image-card{padding-top:44px}
+.orig-tag{position:absolute;top:12px;left:16px;font:700 11px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.orig-tag::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:8px;vertical-align:1px}
+.chart-slot{display:flex;min-height:0}
+.chart-slot > .chart-frame{flex:1}
+.chart-wrap{position:relative;width:100%;height:100%;min-height:240px}
+.chart-wrap canvas{width:100%!important;height:100%!important}
+.aside{display:flex;flex-direction:column;justify-content:center;gap:18px}
+.aside p{margin:0;font-size:1.08rem;color:var(--text)}
+.aside p.muted{color:var(--muted)}
+.bignum{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(4rem,9vw,8rem);line-height:.9;color:var(--red);letter-spacing:-.04em}
+.credit{margin-top:auto;padding-top:14px;font-size:12.5px;line-height:1.5;color:var(--faint);max-width:92rem}
+.credit + .credit{margin-top:4px;padding-top:0}
+.credit.data-credit{color:var(--muted)}
+.credit.data-credit::before{content:"Chart data · ";font-weight:700;color:var(--teal)}
+.credit a{text-underline-offset:3px}
+.footerbar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:16px;
+  padding:12px clamp(20px,4.6vw,88px) 16px;background:linear-gradient(180deg,transparent,rgba(6,19,29,.85) 45%)}
+.progress{flex:1;height:3px;background:rgba(159,182,198,.18);position:relative;border-radius:2px;overflow:hidden}
+.progress > span{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,var(--teal),var(--red));width:0;transition:width .45s ease}
+.counter{font:700 12px/1 Manrope,sans-serif;letter-spacing:.08em;min-width:4.5em;color:var(--muted)}
+.navbtns{display:flex;gap:8px}
+.navbtns button{width:40px;height:40px;border:1px solid var(--card-line);background:rgba(16,43,64,.8);color:var(--text);font-size:20px;line-height:1;border-radius:8px}
+.navbtns button:hover:not(:disabled){border-color:var(--teal)}
+.navbtns button:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.navbtns button:disabled{opacity:.3;cursor:default}
+.hint{margin-top:34px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.frame-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;min-height:0;align-content:center}
+.frame-card{background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:24px 26px;display:flex;flex-direction:column;gap:8px}
+.frame-card .num{font-family:Manrope,sans-serif;font-weight:800;font-size:1rem;letter-spacing:.1em;color:var(--red);text-transform:uppercase}
+.frame-card h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.55rem;letter-spacing:-.02em;margin:0}
+.frame-card p{margin:0;font-size:1.02rem;line-height:1.5;color:var(--muted)}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;align-content:center;min-height:0}
+.stat{background:var(--card);border:1px solid var(--card-line);border-radius:14px;padding:38px 34px;border-top:3px solid var(--teal)}
+.stat:nth-child(2){border-top-color:var(--red)}
+.stat .figure{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(3rem,6.4vw,6rem);letter-spacing:-.03em;line-height:1;margin:14px 0 18px;font-variant-numeric:tabular-nums}
+.stat .label{font-size:1.08rem;color:var(--muted);margin:0;max-width:32rem}
+/* staggered reveal for cards on slide entry */
+.slide .reveal{opacity:0;transform:translateY(16px)}
+.slide.active .reveal{animation:reveal .6s cubic-bezier(.2,.7,.2,1) forwards}
+.slide.active .reveal:nth-child(2){animation-delay:.12s}
+.slide.active .reveal:nth-child(3){animation-delay:.24s}
+.slide.active .reveal:nth-child(4){animation-delay:.36s}
+@keyframes reveal{to{opacity:1;transform:none}}
+/* camera-safe guide, toggle with the C key */
+.cam-zone{display:none;position:fixed;top:0;right:0;width:var(--cam-w);height:var(--cam-h);border:2px dashed rgba(255,90,105,.7);z-index:9;pointer-events:none}
+.cam-zone::after{content:"Host camera";position:absolute;bottom:8px;left:10px;font:700 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.deck.show-cam .cam-zone{display:block}
+@media(max-width:900px){
+  :root{--cam-w:0px}
+  .chart-stage.has-aside,.frame-grid,.stat-row{grid-template-columns:1fr}
+  .slide{padding:20px 20px 80px}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide,.slide.active{transition:none}
+  .slide .reveal,.slide.active .reveal{animation:none;opacity:1;transform:none}
+}
+
+/* navy variant extras */
+.chart-frame{border-radius:12px}
+.title-slide h1::after{background:linear-gradient(90deg,var(--red),var(--teal))}
+.takeaway{font-size:1.15rem;line-height:1.45;color:var(--text);margin:0}
+.takeaway b{color:var(--teal);font-weight:700}
+.aside .bignum{font-size:clamp(3.4rem,7vw,6.4rem)}
+.aside .bigcap{font-size:1rem;color:var(--muted);margin-top:-6px}
+.chart-frame.image-card img{max-height:100%;background:#fff}
+.legend-row{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin:0 0 8px}
+.legend-row i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:8px;vertical-align:middle}
+h2{font-size:clamp(1.8rem,3vw,3rem)}
+.credit{font-size:14px;color:var(--muted)}
+.credit.data-credit{color:var(--faint)}
+.takeaway{font-size:1.25rem}
+.chart-stage.has-aside.img-wide{grid-template-columns:minmax(0,1.9fr) minmax(240px,.55fr)}
+.static .slide,.static .slide.active{transition:none!important}.static .slide .reveal{animation:none;opacity:1;transform:none}
+.one-liner .credit,.title-slide .credit{margin-top:28px}
+.stat-row.three{grid-template-columns:1fr 1fr 1fr}
+.stat-row.three .stat:nth-child(3){border-top-color:#8fc6ff}
+.plist{list-style:none;margin:0;padding:0;display:grid;gap:12px;align-content:center}
+.plist li{background:var(--card);border:1px solid var(--card-line);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.plist .n{font-family:Manrope,sans-serif;font-weight:800;color:var(--teal);letter-spacing:.06em;font-size:.95rem;padding-top:3px}
+.plist p{margin:2px 0 0;color:var(--muted);font-size:1.02rem}
+.scale{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex:1;align-content:center;min-height:0}
+.scale article{background:var(--card);border:1px solid var(--card-line);border-radius:12px;padding:22px 20px;border-top:3px solid var(--teal)}
+.scale article:nth-child(2){border-top-color:var(--red)}
+.scale article:nth-child(3){border-top-color:#8fc6ff}
+.scale h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.55rem;margin:0 0 8px}
+.scale p{margin:0;color:var(--muted);font-size:1rem;line-height:1.45}
+@media(max-width:900px){
+  .stat-row.three,.scale{grid-template-columns:1fr}
+  html,body{overflow:auto;height:auto}
+  .deck{height:auto;min-height:100%}
+  .slide{position:relative;inset:auto;height:auto;min-height:100%;display:none;overflow:visible}
+  .slide.active{display:flex}
+  .chart-stage,.scale{flex:none;min-height:auto}
+  .plist{align-content:start;gap:8px}
+  .plist li{padding:10px 12px}
+  .aside .bignum{font-size:2.8rem}
+  .credit{margin-top:16px}
+}
+
+/* grandparent economy deck extras */
+.chart-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.chart-stage.two-aside{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(260px,.62fr)}
+.chart-frame.titled{flex-direction:column;align-items:stretch;gap:10px}
+.chart-frame.titled .chart-wrap{flex:1;height:auto;min-height:0}
+.frame-title{margin:0;font:800 13px/1.3 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tag{display:inline-block;font:800 11px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#ffc857;border:1px solid rgba(255,200,87,.65);border-radius:999px;padding:5px 10px;margin:0 6px 0 0;vertical-align:middle;white-space:nowrap}
+.frame-title .tag{margin-left:8px}
+.aside{gap:14px}
+.aside p.note{font-size:1.02rem;line-height:1.45;color:var(--muted)}
+.aside .bignum.sm{font-size:clamp(2.6rem,4.6vw,4.4rem)}
+.frame-card h3 small{display:block;font:800 12px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.frame-card ul{margin:6px 0 0;padding-left:1.1em;color:var(--muted);font-size:1.05rem;line-height:1.5;display:grid;gap:8px}
+.frame-card ul b{color:var(--text)}
+@media(max-width:900px){.chart-stage.two,.chart-stage.two-aside{grid-template-columns:1fr}}
+.title-slide.close h1{font-size:clamp(2.4rem,4.6vw,4.4rem);max-width:22ch}
+.title-slide .credit + .credit{margin-top:6px}

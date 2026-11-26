@@ -1,0 +1,29 @@
+/* Slide 13 only: native SVG data chart, no changes to existing slide styles. */
+.backlog-slide h2{font-size:clamp(2rem,3.1vw,3.4rem)}
+.backlog-slide .brand-mark img{max-width:130px;object-fit:contain}
+.bl-subtitle{font-size:20px;color:#9fb6c6;margin:14px 0 22px;max-width:calc(100% - var(--cam-w) - 24px)}
+.bl-headlines{display:grid;grid-template-columns:1fr 1fr 120px;gap:40px;align-items:center;border-bottom:1px solid #9fb6c633;padding-bottom:18px}
+.bl-headlines span{font:700 14px Manrope,sans-serif;letter-spacing:.1em}
+.bl-headlines strong{display:block;font:800 58px/1.2 Manrope,sans-serif;letter-spacing:-.04em;margin-top:8px}
+.bl-headlines small{font-size:25px;letter-spacing:0}
+.bl-headlines p{font-size:16px;color:#9fb6c6;margin:5px 0 0}
+.bl-ge{color:#62cfdb;stroke:#62cfdb}.bl-se{color:#ff6d7b;stroke:#ed3c4d}
+.bl-asof{font:700 16px/1.6 Manrope,sans-serif;color:#9fb6c6;text-align:right;letter-spacing:.14em}
+.bl-asof b{font-size:28px;color:#fdf7ee}
+.bl-chart{flex:1;min-height:0;display:flex;align-items:center;padding-top:12px}
+.bl-chart svg{width:100%;height:100%;min-height:0;overflow:visible}
+.bl-grid{stroke:#9fb6c626;stroke-width:1}.bl-baseline{stroke:#9fb6c680;stroke-dasharray:5 6}
+.bl-axis{font:500 16px 'DM Sans',sans-serif;fill:#a9c0d0}.bl-year{font:700 19px Manrope,sans-serif;fill:#fdf7ee}
+.bl-axis-title{font:700 15px Manrope,sans-serif;fill:#9fb6c6;letter-spacing:1px}.bl-note{font:400 15px 'DM Sans',sans-serif;fill:#9fb6c6}
+.bl-line{fill:none;stroke-width:4;stroke-linejoin:round;stroke-linecap:round}.bl-recast{stroke-dasharray:5 7}
+.bl-break{stroke:#9fb6c659;stroke-width:1;stroke-dasharray:3 6}
+.bl-series circle{fill:#0b1f2e;stroke-width:2.5}
+.backlog-slide.active .bl-series{animation:bl-draw 2s ease-out .25s both}
+@keyframes bl-draw{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.bl-takeaway{font:400 29px/1.2 'DM Serif Display',serif;margin:12px 0 9px}
+.bl-caveat{font-size:15px;line-height:1.5;color:#9fb6c6;margin:0;max-width:1500px}
+.bl-credit{font-size:14px;line-height:1.5;color:#9fb6c6;margin:10px 0 0}
+.bl-credit a{text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){.backlog-slide.active .bl-series{animation:none}}
+@media(max-width:1000px),(max-height:700px){.backlog-slide{overflow-y:auto;padding-bottom:100px}.bl-headlines{grid-template-columns:1fr 1fr;gap:20px}.bl-headlines strong{font-size:38px}.bl-headlines small{font-size:19px}.bl-asof{display:none}.bl-chart{flex:none;height:360px}.bl-subtitle{font-size:17px}.bl-takeaway{font-size:25px}}
+@media(max-width:600px){.bl-headlines{grid-template-columns:1fr}.bl-headlines span{font-size:12px}.bl-headlines strong{font-size:32px}.bl-chart{height:260px}.bl-caveat,.bl-credit{font-size:13px}}

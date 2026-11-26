@@ -113,17 +113,14 @@
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
 
-      <span class="kicker">Monday Nov 23 · mid-session, not a close</span>
-      <h2 style="margin-bottom:16px">Nvidia bounced about 31% from Friday’s $125.53 close after the board reinstated Huang.</h2>
+      <span class="kicker">Regular-session daily closes · through Nov 25, 2026</span>
+      <h2 style="margin-bottom:16px">Nvidia gives back part of its 31% relief rally</h2>
       <div class="chart-stage has-aside">
-        <div class="chart-frame"><div class="chart-wrap"><canvas id="nvidia-huang" aria-label="Nvidia verified price points: Nov 6 close $186.64, Nov 12 close $166.19, Nov 20 close $125.53, and Nov 23 about $165 at 2:24 PM ET, with session range $156.93 to $171.50. The Nov 23 point is not a close."></canvas></div></div>
-        <div class="aside">
-          <p>The board unanimously reinstated Jensen Huang as president, CEO and director.</p>
-          <p class="muted">Official release: the board received “input from senior levels of the United States government” and believes his return poses no national-security risk. Confirm Monday’s official close before air.</p>
-        </div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="nvidia-huang" aria-label="$149.30 Nov 25 close; down 20.0% versus Nov 6, up 18.9% versus Nov 20, down 9.5% versus Nov 23. All 14 daily closes are plotted."></canvas></div></div>
+        <div class="aside"><p><strong>$149.30</strong> · Nov 25 close<br>−20.0% since Nov 6<br>+18.9% since Nov 20</p><p class="muted">Monday’s +31.5% rally was followed by a 9.5% retreat through Wednesday. About 40% of Monday’s dollar gain has been erased.</p></div>
       </div>
-      <p class="credit">Sources: Nvidia board release, Nov 23, 2026; Semafor; CNBC; Yahoo Finance. White House communications director Steven Cheung: “President Trump was totally involved and this is a great decision by the NVIDIA board. We have to protect our geniuses.” Semafor reported that Trump personally joined a board meeting; “intervened” is Kobeissi’s wording, not Cheung’s quote. Trump told CNBC, “I made the deal.” The resignation announcement was Nov 12; the board accepted it Nov 11.</p>
-      <p class="credit data-credit">Only verified prints are plotted: Nov 6 close $186.64; Nov 12 close $166.19; Nov 20 close $125.53; Nov 23 about $165 at 2:24 PM ET, session high $171.50 and low $156.93. Nov 6 to Friday was −32.7%; Nov 12 to Friday was −22.9%; Friday to the Monday snapshot was about +31.4%.</p>
+      <p class="credit">Source: Fiscal.ai MCP, NASDAQ_NVDA historical daily stock prices, retrieved Nov 26, 2026. USD regular-session closes, Nov 6–25; no intraday or after-hours observations.</p>
+      <p class="credit data-credit">Nov 6 → Nov 20: −32.7%. Nov 20 → Nov 23: +31.5%. Nov 23 → Nov 25: −9.5%. Tuesday: −5.9%; Wednesday: −3.9%.</p>
     </section>
 
     <section class="slide" data-slide>
@@ -157,16 +154,14 @@
         <span class="kicker">The Canadian Investor · Livestream notes</span>
       </div>
 
-      <span class="kicker">Verified prints · session still open Friday afternoon</span>
-      <h2 style="margin-bottom:16px">Anthropic fell to within a nickel of its $83 IPO price.</h2>
+      <span class="kicker">IPO update · regular-session closes through Nov 25, 2026</span>
+      <h2 style="margin-bottom:16px">Anthropic closes below its IPO price after a volatile first week.</h2>
       <div class="chart-stage has-aside">
-        <div class="chart-frame"><div class="chart-wrap"><canvas id="anthropic-path" aria-label="Anthropic price path from the $83 IPO to Thursday’s $115.10 high, $97.17 close, and Friday’s $83.05 session low."></canvas></div></div>
-        <div class="aside">
-          <p>Thursday, official: opened $111.50, high $115.10, closed $97.17, up 17% from the $83 offer.</p>
-          <p>Friday session low was $83.05 — 27.8% below that high, and five cents above the IPO price. That is a low, not a close. By mid-afternoon Fortune had it back around $87.</p>
-        </div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="anthropic-path" aria-label="Anthropic daily closes: Nov 19 $97.17, Nov 20 $88.91, Nov 23 $87.64, Nov 24 $81.91, Nov 25 $82.79. IPO reference $83. Separate markers: Nov 19 open $111.50 and high $115.10; Nov 25 low $73.85."></canvas></div></div>
+        <div class="aside"><p><strong>$82.79</strong> · Nov 25 close<br>−0.25% versus the $83 IPO<br>−28.1% versus the debut high</p><p class="muted">Wednesday rebounded 1.1% after three declining sessions. Its $73.85 intraday low was 35.8% below the debut high; it was not the closing price.</p></div>
       </div>
-      <p class="credit">Sources: Axios; Fortune, updated 2:15 PM ET Nov 20, 2026; BBC; Yahoo Finance historical prints for Thursday (open $111.50, high $115.10, low $92.72, close $97.17). The Friday $83.05 low and “roughly $87” bounce are Fortune’s mid-session figures. Confirm the official Friday close before going on air.</p>
+      <p class="credit">Sources: Fiscal.ai MCP, NASDAQ_ANT daily closes and Nov 19 opening trade; <a href="https://stockanalysis.com/stocks/ant/history/" target="_blank" rel="noopener">Stock Analysis / S&amp;P Global</a> for Nov 19 high and Nov 25 low; <a href="https://www.anthropic.com/news/anthropic-prices-initial-public-offering" target="_blank" rel="noopener">Anthropic IPO announcement</a> for $83 offer. Verified Nov 26, 2026. USD; Nov 24 close $81.905 rounds to $81.91. Intraday markers are separate from the closing-price line.</p>
+
     </section>
 
     <section class="slide" data-slide>
@@ -888,27 +883,29 @@
     };
   });
 
-  /* Slide 4 · Anthropic price path (verified prints, unchanged) */
+  /* Anthropic: daily closes, separate intraday observations and IPO reference. */
   Deck.chart("anthropic-path", () => {
-    const labels = ["IPO price", "Thu open", "Thu high", "Thu close", "Fri session low"];
-    const data = [83, 111.5, 115.1, 97.17, 83.05];
-    const txt = ["$83 IPO", "$111.50", "$115.10", "$97.17", "$83.05 low"];
+    const labels = ["Nov 19", "Nov 20", "Nov 23", "Nov 24", "Nov 25"];
+    const closes = [97.17, 88.91, 87.64, 81.905, 82.79];
     return {
       type: "line",
-      data: { labels, datasets: [{ data, borderColor: T.teal, borderWidth: 3, tension: 0.15, fill: false,
-        pointRadius: 7, pointBorderWidth: 0, pointBackgroundColor: [T.muted, T.teal, T.teal, T.teal, T.red] }] },
-      options: {
-        responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(data.length, 1400),
-        layout: { padding: { top: 24, left: 10, right: 30 } },
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => ["IPO $83", "Thursday open $111.50", "Thursday high $115.10", "Thursday close $97.17", "Friday session low $83.05 (Fortune) — not a close"][c.dataIndex] } } },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: T.text, font: { size: 15, weight: 600 } } },
-          y: { min: 70, max: 125, ticks: { font: { size: 15 }, callback: (v) => "$" + v }, grid: { color: T.grid } }
-        }
-      },
+      data: { labels, datasets: [
+        { label: "Regular-session close", data: closes, borderColor: T.teal, borderWidth: 3, tension: 0, pointRadius: 6, pointBackgroundColor: T.teal },
+        { label: "Intraday high / low", data: [115.10, null, null, null, 73.85], showLine: false, pointStyle: "triangle", pointRadius: 8, pointBackgroundColor: T.red, borderColor: T.red },
+        { label: "Opening trade", data: [111.50, null, null, null, null], showLine: false, pointStyle: "rectRot", pointRadius: 7, pointBackgroundColor: T.muted, borderColor: T.muted },
+        { label: "$83 IPO price", data: labels.map(() => 83), borderColor: alpha(T.red, .7), borderDash: [7, 5], borderWidth: 2, pointRadius: 0 }
+      ] },
+      options: { responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(5, 1400),
+        layout: { padding: { top: 28, left: 18, right: 30, bottom: 12 } },
+        plugins: { legend: { display: true, labels: { color: T.text, font: { size: 13 } } }, tooltip: { callbacks: { label: (c) => c.dataset.label + ": $" + Number(c.raw).toFixed(2) } } },
+        scales: { x: { grid: { display: false }, ticks: { color: T.text, font: { size: 15, weight: 600 } } },
+          y: { min: 65, max: 125, ticks: { font: { size: 15 }, callback: (v) => "$" + v }, grid: { color: T.grid } } } },
       plugins: [{ id: "antNotes", afterDatasetsDraw(chart){
-        hline(chart, 83, alpha(T.red, .7), null);
-        chart.getDatasetMeta(0).data.forEach((p, i) => { if (ok(p)) tag(chart.ctx, txt[i], i === 4 ? p.x - 4 : i === 0 ? p.x + 4 : p.x, p.y - 14, { align: i === 4 ? "right" : i === 0 ? "left" : "center", color: i === 4 ? T.red : T.text }); });
+        chart.getDatasetMeta(0).data.forEach((p, i) => { if (ok(p)) tag(chart.ctx, "$" + closes[i].toFixed(2), p.x, p.y - 16, { align: i === 0 ? "left" : i === 4 ? "right" : "center" }); });
+        const high = pt(chart, 1, 0), low = pt(chart, 1, 4), open = pt(chart, 2, 0);
+        if(ok(high)) tag(chart.ctx, "$115.10 high", high.x + 14, high.y - 12, { color: T.red });
+        if(ok(open)) tag(chart.ctx, "$111.50 open", open.x + 14, open.y + 14, { color: T.muted, base: "top" });
+        if(ok(low)) tag(chart.ctx, "$73.85 intraday low", low.x - 10, low.y + 20, { align: "right", color: T.red, base: "top" });
       } }]
     };
   });
@@ -1311,22 +1308,18 @@
 
   /* New notes stack · verified Monday tape and official survey/prospectus figures */
   Deck.chart("nvidia-huang", () => {
-    const labels = ["Nov 6 close", "Nov 12 close", "Nov 20 close", "Nov 23 · 2:24 PM"];
-    const values = [186.64, 166.19, 125.53, 165.00];
+    const labels = ["Nov 6", "Nov 9", "Nov 10", "Nov 11", "Nov 12", "Nov 13", "Nov 16", "Nov 17", "Nov 18", "Nov 19", "Nov 20", "Nov 23", "Nov 24", "Nov 25"];
+    const values = [186.64, 178.67, 168.89, 173.73, 166.19, 162.85, 156.14, 155.46, 150.96, 145.98, 125.53, 165.05, 155.38, 149.30];
     return {
       type: "line",
-      data: { labels, datasets: [{ data: values, borderColor: T.teal, borderWidth: 3, tension: .12,
-        pointRadius: [6, 6, 7, 8], pointBorderWidth: 0, pointBackgroundColor: [T.teal, T.teal, T.red, T.red] }] },
-      options: { responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(values.length, 1300), layout: { padding: { top: 30, right: 26 } },
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => c.dataIndex === 3 ? "$165.00 at 2:24 PM ET, not a close; range $156.93–$171.50" : "$" + values[c.dataIndex].toFixed(2) + " official close" } } },
-        scales: { x: { grid: { display: false }, ticks: { color: T.text, font: { size: 15, weight: 600 } } },
-          y: { min: 115, max: 195, ticks: { font: { size: 15 }, callback: (v) => "$" + v }, grid: { color: T.grid } } } },
+      data: { labels, datasets: [{ label: "Regular-session close", data: values, borderColor: T.teal, borderWidth: 3, tension: 0,
+        pointRadius: 5, pointBorderWidth: 0, pointBackgroundColor: values.map((_, i) => i === 10 || i === 13 ? T.red : T.teal) }] },
+      options: { responsive: true, maintainAspectRatio: false, animation: Deck.drawIn(values.length, 1300), layout: { padding: { top: 30, right: 26, left: 18 } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => "$" + values[c.dataIndex].toFixed(2) + " regular-session close" } } },
+        scales: { x: { grid: { display: false }, ticks: { color: T.text, maxRotation: 0, font: { size: 13, weight: 600 } } },
+          y: { min: 115, max: 200, ticks: { font: { size: 15 }, callback: (v) => "$" + v }, grid: { color: T.grid } } } },
       plugins: [{ id: "nvdaNotes", afterDatasetsDraw(chart){
-        chart.getDatasetMeta(0).data.forEach((p, i) => { if (ok(p)) tag(chart.ctx, "$" + values[i].toFixed(i === 3 ? 0 : 2) + (i === 3 ? " mid-session" : ""), p.x, p.y - 14, { align: i === 3 ? "right" : "center", color: i >= 2 ? T.red : T.text }); });
-        const p = pt(chart, 0, 3), y = chart.scales.y; if (!ok(p)) return;
-        chart.ctx.save(); chart.ctx.strokeStyle = alpha(T.red, .75); chart.ctx.lineWidth = 4; chart.ctx.beginPath(); chart.ctx.moveTo(p.x, y.getPixelForValue(156.93)); chart.ctx.lineTo(p.x, y.getPixelForValue(171.50)); chart.ctx.stroke(); chart.ctx.restore();
-        tag(chart.ctx, "$171.50 high", p.x - 10, y.getPixelForValue(171.50), { align: "right", base: "middle", size: 12 });
-        tag(chart.ctx, "$156.93 low", p.x - 10, y.getPixelForValue(156.93), { align: "right", base: "middle", size: 12 });
+        chart.getDatasetMeta(0).data.forEach((p, i) => { if (ok(p) && [0, 10, 11, 13].includes(i)) tag(chart.ctx, "$" + values[i].toFixed(2), p.x, p.y - 16, { align: i === 0 ? "left" : i === 13 ? "right" : "center", color: i === 10 || i === 13 ? T.red : T.text }); });
       } }]
     };
   });

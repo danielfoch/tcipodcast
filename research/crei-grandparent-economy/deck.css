@@ -167,3 +167,6 @@ h2{font-size:clamp(1.8rem,3vw,3rem)}
 @media(max-width:900px){.chart-stage.two,.chart-stage.two-aside{grid-template-columns:1fr}}
 .title-slide.close h1{font-size:clamp(2.4rem,4.6vw,4.4rem);max-width:22ch}
 .title-slide .credit + .credit{margin-top:6px}
+/* embedded source charts: fill the frame height, keep the aspect ratio */
+.chart-frame.image-card img.fit{height:100%;width:auto;max-width:100%}
+@media(max-width:900px){.chart-frame.image-card img.fit{height:auto;width:100%}}

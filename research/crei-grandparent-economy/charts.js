@@ -126,5 +126,28 @@
 
   cols("c-give", D.give.labels, D.give.v, { fmt:pct, max:80, colors:[C.key, C.light], title:"Grandparents, preferred way to pass money on" });
 
+  /* Slides added in v2: TD wealth gap and NBC affordability. */
+  const legend = { position:"bottom", labels:{ color:T.text, boxWidth:14, font:{ size:16, weight:"700" } } };
+  Deck.chart("c-quint", () => ({
+    type:"bar",
+    data:{ labels:D.quint.labels, datasets:[
+      { label:"Highest quintile (top 20%)", data:D.quint.highest, backgroundColor:C.key, borderRadius:5 },
+      { label:"Fourth quintile", data:D.quint.fourth, backgroundColor:C.light, borderRadius:5 },
+      { label:"Middle quintile", data:D.quint.middle, backgroundColor:C.slate, borderRadius:5 } ] },
+    options: base({ plugins:{ legend, barLabels:{ on:true, fmt:(v)=>v.toFixed(1) } },
+      scales:{ x:{ grid:nogrid, ticks }, y:{ grid, min:0, max:80, ticks:{ callback:pct }, title:ytitle("Share of household wealth, %") } } })
+  }));
+
+  cols("c-gain", D.gain.labels, D.gain.v, { fmt:(v)=>"+"+v+"%", tick:pct, max:100, colors:[C.key, C.slate, C.key, C.slate], title:"Growth in average net worth, 2019 to 2023" });
+
+  Deck.chart("c-nbc", () => ({
+    type:"bar",
+    data:{ labels:D.nbc.labels, datasets:[
+      { label:"Peak, 2023 to 2024, about", data:D.nbc.peak, backgroundColor:C.slate, borderRadius:6, maxBarThickness:120, skipNull:true },
+      { label:"Latest, 2026, about", data:D.nbc.latest, backgroundColor:C.key, borderRadius:6, maxBarThickness:120, skipNull:true } ] },
+    options: base({ plugins:{ legend, barLabels:{ on:true, fmt:(v)=>"~"+v+"%" } },
+      scales:{ x:{ grid:nogrid, ticks }, y:{ grid, min:0, max:120, ticks:{ callback:pct }, title:ytitle("Mortgage payment on the median home, % of median income") } } })
+  }));
+
   Deck.start();
 })();

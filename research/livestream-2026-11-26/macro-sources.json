@@ -1,0 +1,91 @@
+{
+  "verified_on": "2026-11-26",
+  "sources": {
+    "wood": "https://www.woodmac.com/press-releases/us-data-centre-additions-return-to-growth-in-q2-2026-as-developers-push-construction-and-pipeline-continues-to-expand2/",
+    "goldman": "https://www.goldmansachs.com/insights/articles/us-data-center-power-demand-projected-to-double-by-2027",
+    "bis": "https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors",
+    "ft": "https://www.ft.com/content/7838a715-07d4-4605-aa60-21f5af2b2370",
+    "reuters": "https://www.investing.com/news/stock-market-news/nvidia-halts-server-shipments-to-four-southeast-asian-countries-ft-reports-5052112",
+    "crn": "https://www.crnasia.com/news/2026/components-and-peripherals/nvidia-halts-server-shipments-to-southeast-asia-as-us-tighte",
+    "cnbc": "https://www.cnbc.com/2026/11/25/nvidia-china-ai-chip-remote-access.html",
+    "resale": "https://www.techtimes.com/articles/331572/20261126/nvidia-b300-resale-sellers-float-thousands-gpus-china-access-license-line-sits-near-200-gpus.htm",
+    "nvidia": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
+    "cibc": "https://private-wealth.us.cibc.com/insights/articles/quantifying-the-ai-hit-to-us-inflation",
+    "kpmg": "https://kpmg.com/us/en/articles/2026/the-wealth-affect-november-2026.html",
+    "fed": "https://www.federalreserve.gov/econres/notes/feds-notes/measuring-spending-in-the-survey-of-consumer-finances-20261009.html",
+    "eia": "https://www.eia.gov/electricity/annual/table.php?t=epa_01_02.html",
+    "steo": "https://www.eia.gov/outlooks/steo/archives/Nov26.pdf",
+    "lbl": "https://www.energy.gov/documents/united-states-data-center-energy-usage-report-2025-update",
+    "lbl2024": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report.pdf",
+    "queues": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+    "iea": "https://www.iea.org/files/b3b96850-13aa-4f7b-a11d-217b632081f8/WorldEnergyOutlook2026.pdf",
+    "quartz": "https://qz.com/nvidia-gpu-sellers-china-remote-access-rule-112526"
+  },
+  "datasets": {
+    "generation_twh": {
+      "2015": 4078.714,
+      "2016": 4077.574,
+      "2017": 4035.443,
+      "2018": 4180.988,
+      "2019": 4130.574,
+      "2020": 4009.767,
+      "2021": 4109.699,
+      "2022": 4230.668,
+      "2023": 4183.27,
+      "2024": 4308.634,
+      "2025": 4425.029,
+      "2026": 4539,
+      "2027": 4595
+    },
+    "generation_forecast_years": [
+      2026,
+      2027
+    ],
+    "generation_missing_years": [
+      2028,
+      2029
+    ],
+    "consumption_requirement_2030_twh": {
+      "value": 5500,
+      "approximate": true,
+      "derivation": "649 TWh / 0.118 rounded published LBNL share; not a generation forecast"
+    },
+    "data_centre_share_consumption_percent": {
+      "2018": 1.9,
+      "2024": 4.7,
+      "2030_reference_case": 11.8
+    },
+    "data_centre_twh": {
+      "2024": 192,
+      "2030_reference_case": 649
+    },
+    "cibc_ai_share_growth_percent": {
+      "2024_estimate": 10,
+      "2025_estimate": 23,
+      "2026_forecast": 30
+    },
+    "woodmac_pipeline_gw": {
+      "disclosed_lower_bound": 430,
+      "high_confidence_approx": 300,
+      "signed": 201,
+      "construction_approx": 80
+    },
+    "derivations": {
+      "extra_dc_twh": 457,
+      "extra_average_gw": 52.1689497716895,
+      "share_multiple": 2.5106382978723403,
+      "generation_growth_2015_2025_percent": 8.490789008496314,
+      "kpmg_cumulative_equity_change_percent": -32.49999999999999
+    }
+  },
+  "qualifications": [
+    "No Nvidia inventory chart, per revised four-slide brief.",
+    "2018 share uses the LBNL 2024 report; 2024/2030 use the June 2026 update. Missing annual shares are not invented.",
+    "2030 bar is approximate consumption requirements; the other bars are utility-scale generation. Different measures explicitly labelled.",
+    "2028\u20132029 generation omitted; no precise 2025 data centre point digitized from a chart.",
+    "FT/CNBC full text unavailable: resale and financing remain explicitly qualified secondary reporting.",
+    "Quartz rental figure only; raw series unavailable.",
+    "Pipeline categories overlap and cannot be summed.",
+    "KPMG headline GDP estimate differs from individual quarterly changes; both disclosed. CIBC is a forecast; Fed is survey evidence; causal arrows are TCI hypothesis."
+  ]
+}

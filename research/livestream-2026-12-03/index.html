@@ -40,9 +40,54 @@
       <p class="hint">Press → to start</p>
     </section>
 
+    <section class="slide news-slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Semafor exclusive · Nov. 26, 2026</span>
+      <h2 style="margin-bottom:16px">Citi and JPMorgan are shopping their AI loans.</h2>
+      <div class="chart-stage has-aside">
+        <div class="chart-frame image-card">
+          <span class="orig-tag">Semafor photo · Daniel Cole/Reuters</span>
+          <img src="./semafor-banks-ai-debt.jpg" alt="Aerial photograph of a large data-center campus under construction in dry hills, with steel frames, cranes and a full parking lot. Daniel Cole/Reuters, via Semafor.">
+        </div>
+        <div class="aside">
+          <ul class="points">
+            <li>SRT pitches: loans stay, losses move</li>
+            <li>December cleanup, or room to lend more</li>
+            <li>Issuance has crowded out Treasurys</li>
+          </ul>
+        </div>
+      </div>
+      <p class="credit">Ellen DiMauro, Semafor, Nov. 26, 2026. <a href="https://www.semafor.com/article/11/26/2026/banks-look-to-dump-ai-debt" target="_blank" rel="noopener">Banks look to dump AI debt</a>. Photo: Daniel Cole/Reuters, via Semafor. People familiar with the pitches. No deal size in the piece.</p>
+      <p class="speaker-notes">Where does the SRT risk end up: private credit, insurers, pensions? Semafor says some pitches keep the loans on the balance sheet and shift loss risk to investors. Banks may be managing risk, or making room to lend more. Semafor’s line: “the risk isn’t disappearing so much as moving somewhere harder to see.”</p>
+    </section>
+
+    <section class="slide" data-slide>
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">U.S. dollar bonds · calendar years through 2025</span>
+      <h2 style="margin-bottom:16px">AI-related dollar bond issuance, by year.</h2>
+      <div class="chart-stage">
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="ai-dollar-bonds" aria-label="AI-related U.S. dollar bond issuance, annual sums of Dallas Fed monthly par amounts, in billions: 2020 23.7, 2021 85.2, 2022 46.8, 2023 24.4, 2024 48.1, 2025 189.8."></canvas></div></div>
+      </div>
+      <p class="credit">Source: Federal Reserve Bank of Dallas, Hugo De Vere, Srini Ramaswamy and Seth Searls, Feb. 10, 2026, <a href="https://www.dallasfed.org/research/economics/2026/0210-searls-aifinancing" target="_blank" rel="noopener">How AI debt financing impacts duration supply and interest rates</a>. Chart 2 and the <a href="https://www.dallasfed.org/-/media/documents/research/economics/2026/0210data.xlsx" target="_blank" rel="noopener">chart workbook</a>. U.S. dollar par amounts. Issuers: Bank of America AI basket plus selected data-center and AI-power names (Bloomberg: RPLDCI, VOLTAG, XAIX XX; tickers WULF, CIFR). Bloomberg, authors’ calculations.</p>
+      <p class="credit data-credit">Annual sums of the workbook’s monthly Amount column, USD billions: 2020 23.661638, 2021 85.163885, 2022 46.829713, 2023 24.403306, 2024 48.119268, 2025 189.751404. Bar labels round those sums to one decimal. The series ends December 2025.</p>
+      <p class="speaker-notes">Dollar bonds only, through December 2025. Bank of America AI basket plus selected data-center and power names. Separate from the bank loan portfolios on the previous slide. 2026 is not in this workbook.</p>
+    </section>
+
     <div class="footerbar">
       <div class="progress" aria-hidden="true"><span></span></div>
-      <div class="counter">1 / 1</div>
+      <div class="counter">1 / 3</div>
       <div class="navbtns">
         <button type="button" data-prev aria-label="Previous slide">‹</button>
         <button type="button" data-next aria-label="Next slide">›</button>
@@ -60,6 +105,53 @@
         if (deck) deck.classList.toggle("show-notes");
       }
     });
+    (function(){
+      const T = Deck.theme;
+      const D = window.DECK_DATA.aiDollarBonds;
+      const ok = (el) => el && Number.isFinite(el.x) && Number.isFinite(el.y);
+      function tag(ctx, text, x, y, color, size){
+        ctx.save();
+        ctx.font = "700 " + (size || 16) + "px \"DM Sans\", sans-serif";
+        ctx.textAlign = "center"; ctx.textBaseline = "bottom";
+        ctx.lineWidth = 5; ctx.strokeStyle = "rgba(6,19,29,.9)"; ctx.lineJoin = "round";
+        ctx.strokeText(text, x, y); ctx.fillStyle = color; ctx.fillText(text, x, y);
+        ctx.restore();
+      }
+      Deck.chart("ai-dollar-bonds", () => {
+        const labels = D.years.map(String);
+        const values = D.billions;
+        const last = values.length - 1;
+        return {
+          type: "bar",
+          data: { labels, datasets: [{ data: values, borderRadius: 6, borderSkipped: false, barPercentage: .62,
+            backgroundColor: values.map((_, i) => i === last ? T.red : T.teal) }] },
+          options: {
+            responsive: true, maintainAspectRatio: false, layout: { padding: { top: 28, bottom: 4 } },
+            animation: Deck.reduce ? false : { duration: 900, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 90 : 0 },
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => c.raw.toFixed(6).replace(/0+$/, "").replace(/\.$/, "") + " billion USD, par" } } },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: T.text, maxRotation: 0, minRotation: 0, autoSkip: false,
+                font: (ctx) => ({ size: ctx.chart.width < 560 ? 11 : 16, weight: 700 }) } },
+              y: { beginAtZero: true, max: 230, ticks: { font: (ctx) => ({ size: ctx.chart.width < 560 ? 11 : 15 }), callback: (v) => "$" + v + "B" }, grid: { color: T.grid },
+                title: { display: true, text: "USD billions", color: T.muted, font: (ctx) => ({ size: ctx.chart.width < 560 ? 11 : 13 }) } }
+            }
+          },
+          plugins: [{ id: "aiBondLabels", afterDatasetsDraw(chart){
+            const size = chart.width < 560 ? 11 : 16;
+            chart.ctx.save();
+            chart.ctx.font = "700 " + size + "px \"DM Sans\", sans-serif";
+            chart.getDatasetMeta(0).data.forEach((b, i) => {
+              if (!ok(b)) return;
+              const label = values[i].toFixed(1);
+              const gap = chart.chartArea.width / values.length;
+              if (chart.ctx.measureText(label).width > gap - 4) return;
+              tag(chart.ctx, label, b.x, b.y - 12, i === last ? T.red : T.text, size);
+            });
+            chart.ctx.restore();
+          } }]
+        };
+      });
+    })();
     Deck.start();
   </script>
 </body>

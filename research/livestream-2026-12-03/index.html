@@ -1,0 +1,66 @@
+<!--
+  How to add a slide: paste a <section class="slide" data-slide> before .footerbar.
+  Chart: kicker names the period, h2 is the title, canvas sits in .chart-wrap, axis ticks name the units, then <p class="credit"> for the source and <p class="credit data-credit"> for the dataset. Put values in deck-data.js and call Deck.chart("canvas-id", ...) before Deck.start().
+  X post: save the screenshot in this folder and use .chart-frame.image-card with .orig-tag, plus a credit line with the account, date and post URL.
+  Speaker notes: add <p class="speaker-notes"> inside the section. They stay off the canvas until N is pressed.
+  Few words. No em dashes. Any mortgage rate cites WOWA only. Do not add a thank-you, questions or subscribe slide.
+-->
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <base href="./">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Livestream notes, Dec 3, 2026 | TCI Podcast Network</title>
+  <link rel="icon" href="./logo-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./deck.css">
+  <link rel="stylesheet" href="./macro-additions.css">
+  <link rel="stylesheet" href="./power-backlog.css">
+</head>
+<body>
+  <div class="deck">
+    <div class="cam-zone" aria-hidden="true"></div>
+
+    <section class="slide title-slide theme-ink active" data-slide>
+
+      <div class="topbar">
+        <a class="brand-mark" href="https://www.tcipodcast.ca/research/">
+          <img src="./logo-lockup.png" width="360" height="280" alt="TCI Podcast Network">
+        </a>
+        <span class="kicker">The Canadian Investor · Livestream notes</span>
+      </div>
+
+      <span class="kicker">Thursday, December 3, 2026</span>
+      <h1>@cdn_investing Livestream with Simon</h1>
+      <p class="lede">Daniel Foch and Simon (<span style="white-space:nowrap">@Fiat_iceberg</span>). Arrow keys or swipe to move.</p>
+      <p class="hint">Press → to start</p>
+    </section>
+
+    <div class="footerbar">
+      <div class="progress" aria-hidden="true"><span></span></div>
+      <div class="counter">1 / 1</div>
+      <div class="navbtns">
+        <button type="button" data-prev aria-label="Previous slide">‹</button>
+        <button type="button" data-next aria-label="Next slide">›</button>
+      </div>
+    </div>
+  </div>
+  <script src="./chart.umd.min.js"></script>
+  <script src="./deck-data.js"></script>
+  <script src="./deck.js"></script>
+  <script>
+    document.addEventListener("keydown", (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === "n" || e.key === "N") {
+        const deck = document.querySelector(".deck");
+        if (deck) deck.classList.toggle("show-notes");
+      }
+    });
+    Deck.start();
+  </script>
+</body>
+</html>

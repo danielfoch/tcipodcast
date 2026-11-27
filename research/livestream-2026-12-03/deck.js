@@ -72,6 +72,9 @@
   }
 
   const slides = Array.from(document.querySelectorAll(".slide"));
+  document.querySelectorAll(".title-slide .hint").forEach((hint) => {
+    if (slides.length < 2) hint.hidden = true;
+  });
   const progress = document.querySelector(".progress > span");
   const counter = document.querySelector(".counter");
   const prevBtn = document.querySelector("[data-prev]");

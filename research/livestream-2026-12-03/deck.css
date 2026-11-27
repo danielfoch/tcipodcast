@@ -104,6 +104,9 @@ h2{font-size:clamp(2rem,3.4vw,3.4rem);max-width:calc(100% - var(--cam-w) - 24px)
   :root{--cam-w:0px}
   .chart-stage.has-aside,.frame-grid,.stat-row{grid-template-columns:1fr}
   .slide{padding:20px 20px 80px}
+  .news-slide h2{font-size:1.65rem}
+  .news-slide .chart-frame{max-height:32vh}
+  .chart-wrap{min-height:180px}
 }
 @media(prefers-reduced-motion:reduce){
   .slide,.slide.active{transition:none}

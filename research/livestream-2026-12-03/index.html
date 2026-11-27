@@ -56,15 +56,11 @@
           <img src="./semafor-banks-ai-debt.jpg" alt="Aerial photograph of a large data-center campus under construction in dry hills, with steel frames, cranes and a full parking lot. Daniel Cole/Reuters, via Semafor.">
         </div>
         <div class="aside">
-          <ul class="points">
-            <li>SRT pitches: loans stay, losses move</li>
-            <li>December cleanup, or room to lend more</li>
-            <li>Issuance has crowded out Treasurys</li>
-          </ul>
+          <p>Some pitches are synthetic risk transfers: the loans stay, and the loss risk moves.</p>
         </div>
       </div>
       <p class="credit">Ellen DiMauro, Semafor, Nov. 26, 2026. <a href="https://www.semafor.com/article/11/26/2026/banks-look-to-dump-ai-debt" target="_blank" rel="noopener">Banks look to dump AI debt</a>. Photo: Daniel Cole/Reuters, via Semafor. People familiar with the pitches. No deal size in the piece.</p>
-      <p class="speaker-notes">Where does the SRT risk end up: private credit, insurers, pensions? Semafor says some pitches keep the loans on the balance sheet and shift loss risk to investors. Banks may be managing risk, or making room to lend more. Semafor’s line: “the risk isn’t disappearing so much as moving somewhere harder to see.”</p>
+      <p class="speaker-notes">Where does the SRT risk end up: private credit, insurers, pensions? Some of this is December balance-sheet cleanup. Some banks say they are making room to lend more. AI-related issuance has crowded out Treasurys, and some investors feel tapped out. Semafor: "the risk isn't so much disappearing as moving somewhere harder to see."</p>
     </section>
 
     <section class="slide" data-slide>
@@ -78,11 +74,11 @@
       <span class="kicker">U.S. dollar bonds · calendar years through 2025</span>
       <h2 style="margin-bottom:16px">AI-related dollar bond issuance, by year.</h2>
       <div class="chart-stage">
-        <div class="chart-frame"><div class="chart-wrap"><canvas id="ai-dollar-bonds" aria-label="AI-related U.S. dollar bond issuance, annual sums of Dallas Fed monthly par amounts, in billions: 2020 23.7, 2021 85.2, 2022 46.8, 2023 24.4, 2024 48.1, 2025 189.8."></canvas></div></div>
+        <div class="chart-frame"><div class="chart-wrap"><canvas id="ai-dollar-bonds" aria-label="AI-related U.S. dollar bond issuance, annual sums of Dallas Fed monthly par amounts, in billions: 2020 July and August only 23.7, 2021 85.2, 2022 46.8, 2023 24.4, 2024 48.1, 2025 189.8."></canvas></div></div>
       </div>
       <p class="credit">Source: Federal Reserve Bank of Dallas, Hugo De Vere, Srini Ramaswamy and Seth Searls, Feb. 10, 2026, <a href="https://www.dallasfed.org/research/economics/2026/0210-searls-aifinancing" target="_blank" rel="noopener">How AI debt financing impacts duration supply and interest rates</a>. Chart 2 and the <a href="https://www.dallasfed.org/-/media/documents/research/economics/2026/0210data.xlsx" target="_blank" rel="noopener">chart workbook</a>. U.S. dollar par amounts. Issuers: Bank of America AI basket plus selected data-center and AI-power names (Bloomberg: RPLDCI, VOLTAG, XAIX XX; tickers WULF, CIFR). Bloomberg, authors’ calculations.</p>
-      <p class="credit data-credit">Annual sums of the workbook’s monthly Amount column, USD billions: 2020 23.661638, 2021 85.163885, 2022 46.829713, 2023 24.403306, 2024 48.119268, 2025 189.751404. Bar labels round those sums to one decimal. The series ends December 2025.</p>
-      <p class="speaker-notes">Dollar bonds only, through December 2025. Bank of America AI basket plus selected data-center and power names. Separate from the bank loan portfolios on the previous slide. 2026 is not in this workbook.</p>
+      <p class="credit data-credit">Annual sums of the workbook’s monthly Amount column, USD billions: 2020* 23.661638, 2021 85.163885, 2022 46.829713, 2023 24.403306, 2024 48.119268, 2025 189.751404. Bar labels round those sums to one decimal. *2020 is Jul-Aug only. The series ends December 2025.</p>
+      <p class="speaker-notes">Dollar bonds only. 2020* is July and August, the first months in the workbook. Later bars sum every month the workbook lists for that year. Bank of America AI basket plus selected data-center and power names. Separate from the bank loan portfolios on the previous slide. 2026 is not in this workbook.</p>
     </section>
 
     <div class="footerbar">
@@ -118,7 +114,7 @@
         ctx.restore();
       }
       Deck.chart("ai-dollar-bonds", () => {
-        const labels = D.years.map(String);
+        const labels = D.years.map((y) => y === 2020 ? "2020*" : String(y));
         const values = D.billions;
         const last = values.length - 1;
         return {
@@ -128,7 +124,10 @@
           options: {
             responsive: true, maintainAspectRatio: false, layout: { padding: { top: 28, bottom: 4 } },
             animation: Deck.reduce ? false : { duration: 900, easing: "easeOutCubic", delay: (c) => c.type === "data" ? c.dataIndex * 90 : 0 },
-            plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => c.raw.toFixed(6).replace(/0+$/, "").replace(/\.$/, "") + " billion USD, par" } } },
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => {
+              const partial = labels[c.dataIndex] === "2020*" ? ", Jul-Aug only" : "";
+              return c.raw.toFixed(6).replace(/0+$/, "").replace(/\.$/, "") + " billion USD, par" + partial;
+            } } } },
             scales: {
               x: { grid: { display: false }, ticks: { color: T.text, maxRotation: 0, minRotation: 0, autoSkip: false,
                 font: (ctx) => ({ size: ctx.chart.width < 560 ? 11 : 16, weight: 700 }) } },
